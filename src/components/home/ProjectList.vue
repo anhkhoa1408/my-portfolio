@@ -1,21 +1,53 @@
 <script setup lang="ts">
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/vue/16/solid";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { onMounted, ref } from "vue";
+import Project from "./Project.vue";
 
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
-  { name: "", title: "", imgUrl: "" },
-  { name: "", title: "", imgUrl: "" },
-  { name: "", title: "", imgUrl: "" },
-  { name: "", title: "", imgUrl: "" },
-  { name: "", title: "", imgUrl: "" },
-  { name: "", title: "", imgUrl: "" },
+  {
+    name: "BlockID Dashboard",
+    iconUrl: "/images/logo/blockid.svg",
+    imageUrl: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1723262441/preview-project/blockid_h6a8hc.png",
+    rotation: -60,
+  },
+  {
+    name: "BlockID Mobile",
+    iconUrl: "/images/logo/blockid.svg",
+    imageUrl: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1723300662/preview-project/blockid-mobile_psvqzx.png",
+    rotation: -30,
+  },
+  {
+    name: "BlockID Portal",
+    iconUrl: "/images/logo/blockid.svg",
+    imageUrl: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1723305986/preview-project/blockid-portal_iqjcli.png",
+    rotation: 0,
+  },
+  {
+    name: "Cà Mau Portal",
+    iconUrl: "/images/logo/camau.svg",
+    imageUrl: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1723305984/preview-project/camau_mndzyj.png",
+    rotation: 30,
+  },
+  {
+    name: "Carbon Token Exchange",
+    iconUrl: "/images/logo/cte.svg",
+    imageUrl: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1723306488/preview-project/cte-market_bnzpv4.png",
+    rotation: 60,
+  },
+  {
+    name: "Real Estate Funding Hub",
+    iconUrl: "/images/logo/refh.svg",
+    imageUrl: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1723306488/preview-project/refh_dagbh4.png",
+    rotation: 90,
+  },
 ];
 
-const activeProject = ref(Math.floor(projects.length / 2) - 1);
+const activeProject = ref(Math.floor((projects.length - 1) / 2));
 
 onMounted(() => {
   const spiralCards = document.querySelectorAll(".spiral-card");
@@ -27,9 +59,12 @@ onMounted(() => {
         trigger: "#projects",
         start: "top bottom",
         end: "bottom top",
+        toggleActions: "play reverse play reverse",
       },
       onStart: () => {
-        card.style.transform = `rotateY(${index * 30 - activeProject.value * 30}deg) translateZ(600px)`;
+        (card as HTMLDivElement).style.transform = `rotateY(${
+          index * 30 - activeProject.value * 30
+        }deg) translateZ(600px)`;
       },
     });
   });
@@ -50,17 +85,84 @@ onMounted(() => {
       card.dataset.rotation = newRotation; // Store the new rotation
     });
   }
-
-  // Add event listener for mouse wheel scroll
-  // window.addEventListener("wheel", rotateCardsOnScroll);
 });
+
+const handleNextProject = () => {
+  const middleIndex = Math.floor((projects.length - 1) / 2);
+  if (activeProject.value < middleIndex) {
+    activeProject.value = projects.length - 1;
+  } else {
+    ++activeProject.value;
+  }
+  const spiralCards = document.querySelectorAll(".spiral-card");
+  if (activeProject.value === projects.length - 1) {
+    activeProject.value = middleIndex;
+    spiralCards.forEach((card: any, index) => {
+      let newRotation = (index - activeProject.value) * 30;
+      card.style.transform = `rotateY(${newRotation}deg) translateZ(600px)`;
+      card.dataset.rotation = newRotation;
+    });
+  } else {
+    spiralCards.forEach((card: any, index) => {
+      const currentRotation = parseFloat(card?.dataset?.rotation) || 0;
+      let newRotation =
+        index === activeProject.value - Math.floor(projects.length / 2)
+          ? -360 - currentRotation + 30
+          : currentRotation - 30;
+      card.style.transform = `rotateY(${newRotation}deg) translateZ(600px)`;
+      card.dataset.rotation = newRotation;
+    });
+  }
+};
+
+const handlePrevProject = () => {
+  const middleIndex = Math.floor((projects.length - 1) / 2);
+  if (activeProject.value > middleIndex) {
+    activeProject.value = -1;
+  } else {
+    --activeProject.value;
+  }
+  const spiralCards = document.querySelectorAll(".spiral-card");
+  if (activeProject.value === -1) {
+    activeProject.value = middleIndex;
+    spiralCards.forEach((card: any, index) => {
+      let newRotation = (index - activeProject.value) * 30;
+      card.style.transform = `rotateY(${newRotation}deg) translateZ(600px)`;
+      card.dataset.rotation = newRotation;
+    });
+  } else {
+    spiralCards.forEach((card: any, index) => {
+      const currentRotation = parseFloat(card?.dataset?.rotation) || 0;
+      let newRotation =
+        index === activeProject.value + Math.floor(projects.length / 2) + 1
+          ? 360 - currentRotation + 30
+          : currentRotation + 30;
+      card.style.transform = `rotateY(${newRotation}deg) translateZ(600px)`;
+      card.dataset.rotation = newRotation;
+    });
+  }
+};
 </script>
 
 <template>
   <section class="flex flex-col py-14 h-[1000px]">
     <h1 class="font-bold text-5xl self-center mb-[100px]">Projects</h1>
-    <div id="projects" class="spiral-container">
-      <div v-for="(project, index) of projects" :class="`bg-white spiral-card x-${index}`"></div>
+    <div class="relative">
+      <div id="projects" class="spiral-container">
+        <div
+          v-for="(project, index) of projects"
+          :class="[{ active: index === activeProject }, `spiral-card x-${index} text-black`]"
+          :data-rotation="project.rotation"
+        >
+          <Project :data="project" />
+        </div>
+      </div>
+      <button @click="handlePrevProject" class="nav nav__prev">
+        <ChevronLeftIcon class="w-[30px] h-[30px]" />
+      </button>
+      <button @click="handleNextProject" class="nav nav__next">
+        <ChevronRightIcon class="w-[30px] h-[30px]" />
+      </button>
     </div>
   </section>
 </template>
@@ -68,19 +170,47 @@ onMounted(() => {
 <style lang="css" scoped>
 .spiral-container {
   width: 100%;
-  height: 500px;
+  height: 400px;
   position: relative;
-  perspective: 1500px;
+  overflow: hidden;
+  perspective: 3000px;
+
+  &:hover ~ .nav {
+    @apply bg-primary-900;
+  }
 }
 
 .spiral-card {
   position: absolute;
-  width: 250px;
-  height: 200px;
-  top: 100px;
-  left: calc(50% - 125px) !important;
+  width: 225px;
+  top: 40px;
+  left: calc(50% - 112px) !important;
   transition: all 1s ease;
   transform-style: preserve-3d !important;
   transform-origin: center !important;
+}
+
+.nav {
+  @apply flex items-center justify-center p-2 absolute rounded-full duration-200;
+  top: 35%;
+
+  &:hover {
+    @apply bg-primary-900;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+
+  &:disabled {
+    opacity: 0.1;
+  }
+
+  &.nav__prev {
+    @apply left-2;
+  }
+  &.nav__next {
+    @apply right-2;
+  }
 }
 </style>

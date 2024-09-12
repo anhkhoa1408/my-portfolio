@@ -21,9 +21,9 @@ onMounted(() => {
       .fromTo(
         "#hello span",
         {
-          letterSpacing: "5rem",
+          letterSpacing: "4.5rem",
           ease: "power4.out",
-          duration: 2.5,
+          duration: 2,
         },
         {
           letterSpacing: "1rem",
