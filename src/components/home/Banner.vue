@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div id="banner" class="banner h-fit lg:h-screen flex items-center">
+  <div id="banner" class="banner h-[500px] lg:h-screen flex items-center">
     <div class="container py-20 md:py-16 lg:py-32 grid grid-cols-5">
       <div class="col-span-5 lg:col-span-3 flex flex-col items-start gradial-box">
         <p class="font-semibold text-sm xl:text-base mb-3">Hi, I am</p>
@@ -15,7 +15,6 @@
         </p>
         <div>
           <button class="btn btn-primary mr-4">Contact me</button>
-          <button class="btn btn-primary">Browse projects</button>
         </div>
       </div>
       <div class="col-span-2">

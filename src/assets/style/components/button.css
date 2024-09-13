@@ -1,5 +1,5 @@
 .btn {
-  @apply outline-none bg-white active:opacity-50 min-h-[40px] lg:min-h-[50px] px-4 py-2 lg:px-6 lg:py-3 text-sm lg:text-base font-semibold text-primary;
+  @apply outline-none bg-white active:opacity-50 min-h-[40px] lg:min-h-[50px] px-4 py-2 lg:px-6 lg:py-3 text-sm lg:text-base font-semibold text-white rounded-md;
 
   &.btn-primary {
     @apply ease-linear duration-300;
