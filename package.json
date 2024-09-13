@@ -21,7 +21,6 @@
     "split-type": "^0.3.4",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
-    "three": "^0.168.0",
     "troisjs": "^0.3.4",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3"

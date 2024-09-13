@@ -25,8 +25,8 @@ const stacksIcon = ref([
     url: "/images/next-js.svg",
   },
   {
-    x: "60%",
-    y: "80%",
+    x: "72%",
+    y: "88%",
     size: 70,
     url: "/images/express.svg",
   },
@@ -183,11 +183,27 @@ onMounted(() => {
       height: 100%;
       padding: 80px;
     }
+
+    @media screen and (max-width: 576px) {
+      width: 350px;
+      height: 350px;
+      padding: 30px;
+
+      .circle-middle,
+      .circle-inner {
+        padding: 30px;
+      }
+    }
   }
 }
 
 .stack-icon {
   animation: TranslateUpDown 2s linear infinite;
+
+  @media screen and (max-width: 576px) {
+    width: 40px !important;
+    height: 40px !important;
+  }
 }
 
 @keyframes Spin {

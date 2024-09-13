@@ -3,8 +3,8 @@
 </script>
 
 <template>
-  <div id="banner" class="banner h-screen flex items-center">
-    <div class="container py-10 md:py-16 lg:py-32 grid grid-cols-5">
+  <div id="banner" class="banner h-fit lg:h-screen flex items-center">
+    <div class="container py-20 md:py-16 lg:py-32 grid grid-cols-5">
       <div class="col-span-5 lg:col-span-3 flex flex-col items-start gradial-box">
         <p class="font-semibold text-sm xl:text-base mb-3">Hi, I am</p>
         <h1 class="font-bold text-xl md:text-3xl xl:text-5xl mb-6 mask-name">Nguyen Anh Khoa</h1>
