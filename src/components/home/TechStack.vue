@@ -140,8 +140,8 @@ onMounted(() => {
 
 <template>
   <section id="stack" class="stack">
-    <div class="container mx-auto py-10 flex flex-col">
-      <h1 class="font-bold text-5xl mb-[100px] self-center text-center">My Skills</h1>
+    <div class="container mx-auto py-10 md:py-16 lg:py-32 flex flex-col">
+      <h1 class="font-bold text-xl md:text-2xl xl:text-5xl mb-[100px] self-center text-center">My Skills</h1>
       <div class="circle-wrap overflow-hidden relative flex flex-col items-center">
         <div
           v-for="icon in stacksIcon"

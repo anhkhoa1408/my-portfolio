@@ -21,12 +21,13 @@ onMounted(() => {
       .fromTo(
         "#hello span",
         {
-          letterSpacing: "4.5rem",
+          letterSpacing: "5rem",
           ease: "power4.out",
           duration: 2,
+          delay: 0.5,
         },
         {
-          letterSpacing: "1rem",
+          letterSpacing: "0.6rem",
         },
         "loading-and-welcome",
       )
@@ -85,7 +86,7 @@ onMounted(() => {
     <div id="bottom-splash" class="h-[50%] basis-6/12 w-[100%] bg-white"></div>
     <h1
       id="hello"
-      class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-semibold z-20 [&_span]:text-primary [&_span]:text-[8rem]"
+      class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-semibold z-20 [&_span]:text-primary lg:[&_span]:text-[5rem] xl:[&_span]:text-[7rem]"
     >
       Hello
     </h1>

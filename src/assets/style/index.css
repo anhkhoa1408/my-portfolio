@@ -1,3 +1,5 @@
+@import "./components/index.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -31,7 +33,7 @@ body {
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
 
-    --primary: #151515;
+    --primary: #0a0a0a;
     --primary-foreground: 210 40% 98%;
 
     --info: #2ea44f;

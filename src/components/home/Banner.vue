@@ -1,25 +1,38 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+// import ParticleLogo from "./ParticleLogo.vue";
+</script>
 
 <template>
-  <div id="banner" class="banner h-[600px] flex items-center">
-    <div class="container py-20 grid grid-cols-5">
-      <div class="col-span-3 flex flex-col items-start gradial-box">
-        <p class="font-semibold text-lg mb-3">Hi, I am</p>
-        <h1 class="font-bold text-6xl mb-6">Nguyen Anh Khoa</h1>
-        <p class="leading-relaxed text-xl">
+  <div id="banner" class="banner h-screen flex items-center">
+    <div class="container py-10 md:py-16 lg:py-32 grid grid-cols-5">
+      <div class="col-span-5 lg:col-span-3 flex flex-col items-start gradial-box">
+        <p class="font-semibold text-sm xl:text-base mb-3">Hi, I am</p>
+        <h1 class="font-bold text-xl md:text-3xl xl:text-5xl mb-6 mask-name">Nguyen Anh Khoa</h1>
+        <p class="leading-relaxed text-sm xl:text-base mb-6">
           I'm a Front-end Developer with 3 years experiences of Web Development. I enjoy solving problem and creating
           best user experiences for users. I also enjoy exploring and learning about new technologies, and reading blog
           posts from those who are ahead in the field to gain more experience and knowledge for myself.
         </p>
-        <div></div>
+        <div>
+          <button class="btn btn-primary mr-4">Contact me</button>
+          <button class="btn btn-primary">Browse projects</button>
+        </div>
       </div>
-      <div class="col-span-2"></div>
+      <div class="col-span-2">
+        <!-- <ParticleLogo /> -->
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="css" scoped>
 .banner {
-  /* background-image: linear-gradient(60deg, #1e1e1e 0%, #5a5a5a 100%); */
+  @apply bg-black;
+}
+
+.mask-name {
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(132.6deg, rgba(71, 139, 214, 1) 23.3%, rgba(37, 216, 211, 1) 84.7%);
 }
 </style>

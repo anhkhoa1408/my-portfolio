@@ -13,37 +13,31 @@ const projects = [
     name: "BlockID Dashboard",
     iconUrl: "/images/logo/blockid.svg",
     imageUrl: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1723262441/preview-project/blockid_h6a8hc.png",
-    rotation: -60,
   },
   {
     name: "BlockID Mobile",
     iconUrl: "/images/logo/blockid.svg",
     imageUrl: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1723300662/preview-project/blockid-mobile_psvqzx.png",
-    rotation: -30,
   },
   {
     name: "BlockID Portal",
     iconUrl: "/images/logo/blockid.svg",
     imageUrl: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1723305986/preview-project/blockid-portal_iqjcli.png",
-    rotation: 0,
   },
   {
     name: "Cà Mau Portal",
     iconUrl: "/images/logo/camau.svg",
     imageUrl: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1723305984/preview-project/camau_mndzyj.png",
-    rotation: 30,
   },
   {
     name: "Carbon Token Exchange",
     iconUrl: "/images/logo/cte.svg",
     imageUrl: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1723306488/preview-project/cte-market_bnzpv4.png",
-    rotation: 60,
   },
   {
     name: "Real Estate Funding Hub",
     iconUrl: "/images/logo/refh.svg",
     imageUrl: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1723306488/preview-project/refh_dagbh4.png",
-    rotation: 90,
   },
 ];
 
@@ -145,14 +139,14 @@ const handlePrevProject = () => {
 </script>
 
 <template>
-  <section class="flex flex-col py-14 h-[1000px]">
-    <h1 class="font-bold text-5xl self-center mb-[100px]">Projects</h1>
+  <section class="flex flex-col py-10 md:py-16 lg:py-32 bg-black">
+    <h1 class="font-bold md:text-2xl xl:text-5xl self-center mb-10 lg:mb-[100px]">Projects</h1>
     <div class="relative">
       <div id="projects" class="spiral-container">
         <div
           v-for="(project, index) of projects"
           :class="[{ active: index === activeProject }, `spiral-card x-${index} text-black`]"
-          :data-rotation="project.rotation"
+          :data-rotation="(index - Math.floor((projects.length - 1) / 2)) * 30"
         >
           <Project :data="project" />
         </div>
@@ -185,7 +179,7 @@ const handlePrevProject = () => {
   width: 225px;
   top: 40px;
   left: calc(50% - 112px) !important;
-  transition: all 1s ease;
+  transition: all 0.8s ease;
   transform-style: preserve-3d !important;
   transform-origin: center !important;
 }

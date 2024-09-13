@@ -30,8 +30,5 @@ const { data } = defineProps<{
   flex-direction: column;
   height: 100%;
   cursor: pointer;
-
-  &:hover {
-  }
 }
 </style>
