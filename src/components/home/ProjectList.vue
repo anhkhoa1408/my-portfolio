@@ -148,7 +148,7 @@ const handlePrevProject = () => {
           :class="[{ active: index === activeProject }, `spiral-card x-${index} text-black`]"
           :data-rotation="(index - Math.floor((projects.length - 1) / 2)) * 30"
         >
-          <Project :data="project" />
+          <Project :data="project" :is-active="activeProject === index" />
         </div>
       </div>
       <button @click="handlePrevProject" class="nav nav__prev">
