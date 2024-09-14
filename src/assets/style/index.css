@@ -1,4 +1,5 @@
-@import "./components/index.css";
+@import "./utils/base.css";
+@import "./components/base.css";
 
 @tailwind base;
 @tailwind components;
@@ -14,12 +15,6 @@
 html,
 body {
   background-color: var(--primary);
-}
-
-.mask-name {
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  background-image: linear-gradient(132.6deg, #478bd6 23.3%, #25d8d3 84.7%);
 }
 
 @layer base {

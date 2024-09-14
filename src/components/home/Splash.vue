@@ -83,7 +83,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="splash">
+  <section class="splash">
     <div id="top-splash" class="h-[50%] basis-6/12 w-[100%] bg-white"></div>
     <div id="bottom-splash" class="h-[50%] basis-6/12 w-[100%] bg-white"></div>
     <h1
@@ -93,7 +93,7 @@ onMounted(() => {
       Hello
     </h1>
     <div id="counter" class="absolute right-4 bottom-4 text-primary text-4xl font-semibold z-20"></div>
-  </div>
+  </section>
 </template>
 
 <style lang="css" scoped>

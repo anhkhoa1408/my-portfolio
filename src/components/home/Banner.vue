@@ -3,11 +3,11 @@ import ParticleLogo from "./ParticleLogo.vue";
 </script>
 
 <template>
-  <div id="banner" class="banner lg:h-[90vh] flex items-center">
+  <section id="banner" class="banner lg:h-[90vh] flex items-center">
     <div class="container py-20 md:py-16 lg:py-32 grid grid-cols-5 gap-5 relative">
       <div class="col-span-5 lg:col-span-3 flex flex-col items-start gradial-box">
         <p class="font-semibold text-sm xl:text-base mb-3">Hi, I am</p>
-        <h1 class="font-bold text-xl md:text-3xl xl:text-5xl mb-6 mask-name">Nguyen Anh Khoa</h1>
+        <h1 class="font-bold text-xl md:text-3xl xl:text-5xl mb-6 gradient-text">Nguyen Anh Khoa</h1>
         <p class="leading-relaxed text-sm xl:text-base mb-6">
           I'm a Front-end Developer with 3 years experiences of Web Development. I enjoy solving problem and creating
           best user experiences for users. I also enjoy exploring and learning about new technologies, and reading blog
@@ -21,7 +21,7 @@ import ParticleLogo from "./ParticleLogo.vue";
         <ParticleLogo />
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style lang="css" scoped>
