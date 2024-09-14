@@ -1,14 +1,35 @@
 <script setup lang="ts">
+import gsap from "gsap";
 import * as THREE from "three";
 import { onMounted, onUnmounted, ref } from "vue";
 
+type ImageProps = {
+  src: string;
+  color: number;
+};
+
 const container = ref<HTMLDivElement | null>(null);
 
-const imageData = ref<ImageData | null>(null);
+const activeImageData = ref<ImageData | null>(null);
 
-const imageSrc = ref("/images/logo/react.png");
+const imagesData: ImageProps[] = [
+  {
+    src: "/images/logo/react.png",
+    color: 0x5fc1d7,
+  },
+  {
+    src: "/images/logo/vue.png",
+    color: 0x42d392,
+  },
+  {
+    src: "/images/logo/tailwind.png",
+    color: 0x42d392,
+  },
+];
 
-const originalGeoPoints = ref({});
+const activeImageIdx = ref<number>(0);
+
+const originalPositions = ref<number[]>([]);
 
 let scene: THREE.Scene,
   camera: THREE.OrthographicCamera,
@@ -39,14 +60,13 @@ const initThreeJS = () => {
   scene.add(camera);
   camera.updateProjectionMatrix();
 
-  getImageData(imageSrc.value);
+  getImageData(imagesData[activeImageIdx.value]);
 };
 
-const getImageData = (imgSrc: string) => {
+const getImageData = (activeImage: ImageProps) => {
   const image = new Image();
-  image.src = imgSrc;
+  image.src = activeImage.src;
   image.onload = () => {
-    console.log("load");
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
 
@@ -56,33 +76,34 @@ const getImageData = (imgSrc: string) => {
     if (!ctx) return;
 
     ctx.drawImage(image, 0, 0);
-    imageData.value = ctx?.getImageData(0, 0, image.width, image.height);
+    activeImageData.value = ctx?.getImageData(0, 0, image.width, image.height);
 
-    drawImage();
+    drawImage(activeImage.color);
   };
 };
 
-const drawImage = () => {
-  if (!imageData?.value) return;
+const drawImage = (color: number) => {
+  if (!activeImageData?.value) return;
 
   geometry = new THREE.BufferGeometry();
   const material = new THREE.PointsMaterial({
     size: 2,
-    color: 0x5fc1d7,
+    color,
   });
 
   const vertices = [];
   const speeds = [];
 
-  for (let y = 0, y2 = imageData.value.height; y < y2; y += 4) {
-    for (let x = 0, x2 = imageData.value.width; x < x2; x += 4) {
-      if (imageData.value.data[x * 4 + y * 4 * imageData.value.width] < 128) {
-        const vertexX = x - imageData.value.width / 2;
-        const vertexY = -y + imageData.value.height / 2;
+  for (let y = 0, y2 = activeImageData.value.height; y < y2; y += 3) {
+    for (let x = 0, x2 = activeImageData.value.width; x < x2; x += 3) {
+      if (activeImageData.value.data[x * 4 + y * 4 * activeImageData.value.width] < 128) {
+        const vertexX = x - activeImageData.value.width / 2;
+        const vertexY = -y + activeImageData.value.height / 2;
         const vertexZ = Math.random() * 200;
         const speed = Math.random() / 10 + 0.015;
         vertices.push(vertexX, vertexY, vertexZ);
         speeds.push(speed);
+        originalPositions.value.push(vertexX, vertexY, vertexZ);
       }
     }
   }
@@ -96,23 +117,46 @@ const drawImage = () => {
   scene.add(particleSystem);
 
   animate();
+  animateParticles();
 };
 
 // Animation loop
 const animate = () => {
   requestAnimationFrame(animate);
-  if (particleSystem) {
-    particleSystem.rotation.z += 0.001;
-  }
   renderer.render(scene, camera);
 };
 
 const clearOldParticles = () => {
   if (particleSystem) {
-    scene.remove(particleSystem); // Remove from scene
     geometry.dispose(); // Dispose of geometry
     particleSystem.clear(); // Dispose of material
+    scene.remove(particleSystem); // Remove from scene
+    originalPositions.value = [];
   }
+};
+
+const animateParticles = () => {
+  const positions = geometry.attributes.position.array;
+
+  // Randomize Y positions
+  for (let i = 1; i < positions.length; i += 3) {
+    positions[i] = originalPositions?.value[i] + Math.random() * 500 - 100; // Randomize Y within range
+    positions[i - 1] = originalPositions?.value[i - 1] + Math.random() * 300 - 100; // Randomize Y within range
+  }
+
+  // Notify Three.js that geometry has changed
+  geometry.attributes.position.needsUpdate = true;
+
+  gsap.to(positions, {
+    duration: 4,
+    onUpdate: () => {
+      for (let i = 1; i < positions.length; i += 3) {
+        positions[i] = gsap.utils.interpolate(positions[i], originalPositions?.value[i], 0.02);
+        positions[i - 1] = gsap.utils.interpolate(positions[i - 1], originalPositions?.value[i - 1], 0.02);
+      }
+      geometry.attributes.position.needsUpdate = true;
+    },
+  });
 };
 
 // Handle window resizing
@@ -126,14 +170,26 @@ const onWindowResize = () => {
   renderer.setSize(width, height);
 };
 
-// Vue lifecycle hooks
+let intervalId: NodeJS.Timeout;
+
+const changeStateIntervalFunc = () => {
+  activeImageIdx.value = activeImageIdx.value < imagesData?.length - 1 ? ++activeImageIdx.value : 0;
+  clearOldParticles();
+  getImageData(imagesData[activeImageIdx.value]);
+};
+
 onMounted(() => {
-  initThreeJS();
-  window.addEventListener("resize", onWindowResize);
+  setTimeout(() => {
+    initThreeJS();
+    intervalId = setInterval(changeStateIntervalFunc, 3000);
+    window.addEventListener("resize", onWindowResize);
+  }, 3000);
 });
 
 onUnmounted(() => {
   window.removeEventListener("resize", onWindowResize);
+  clearInterval(intervalId);
+  clearOldParticles();
 });
 </script>
 
@@ -142,11 +198,13 @@ onUnmounted(() => {
   width: 100%;
   height: 500px;
   overflow: hidden;
+
+  @media screen and (max-width: 576px) {
+    height: 280px;
+  }
 }
 </style>
 
 <template>
   <div ref="container" class="particle-container"></div>
-
-  <button @click="clearOldParticles">Change</button>
 </template>

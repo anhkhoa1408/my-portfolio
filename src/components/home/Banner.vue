@@ -3,7 +3,7 @@ import ParticleLogo from "./ParticleLogo.vue";
 </script>
 
 <template>
-  <div id="banner" class="banner h-[500px] lg:h-[90vh] flex items-center">
+  <div id="banner" class="banner lg:h-[90vh] flex items-center">
     <div class="container py-20 md:py-16 lg:py-32 grid grid-cols-5 gap-5 relative">
       <div class="col-span-5 lg:col-span-3 flex flex-col items-start gradial-box">
         <p class="font-semibold text-sm xl:text-base mb-3">Hi, I am</p>
@@ -17,7 +17,7 @@ import ParticleLogo from "./ParticleLogo.vue";
           <button class="btn btn-primary mr-4">Contact me</button>
         </div>
       </div>
-      <div class="col-span-2 -my-20 md:-my-16 lg:-my-32">
+      <div class="col-span-5 lg:col-span-2 -my-20 md:-my-16 lg:-my-32">
         <ParticleLogo />
       </div>
     </div>
