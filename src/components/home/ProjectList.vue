@@ -13,31 +13,38 @@ const projects = [
     name: "BlockID Dashboard",
     iconUrl: "/images/logo/blockid.svg",
     imageUrl: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1723262441/preview-project/blockid_h6a8hc.png",
+    displacementImage: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1723368726/BlockID/header_3_b93kln.png",
   },
   {
     name: "BlockID Mobile",
     iconUrl: "/images/logo/blockid.svg",
     imageUrl: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1723300662/preview-project/blockid-mobile_psvqzx.png",
+    displacementImage:
+      "https://res.cloudinary.com/dvnvhnoub/image/upload/v1723370832/BlockID/Group_1000002212_blyuga.png",
   },
   {
     name: "BlockID Portal",
     iconUrl: "/images/logo/blockid.svg",
     imageUrl: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1723305986/preview-project/blockid-portal_iqjcli.png",
+    displacementImage: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1716130702/portal-1/2_hmyly6.png",
   },
   {
     name: "Cà Mau Portal",
     iconUrl: "/images/logo/camau.svg",
     imageUrl: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1723305984/preview-project/camau_mndzyj.png",
+    displacementImage: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1716132177/portal-3/2_t8rtuj.png",
   },
   {
     name: "Carbon Token Exchange",
     iconUrl: "/images/logo/cte.svg",
     imageUrl: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1723306488/preview-project/cte-market_bnzpv4.png",
+    displacementImage: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1716367621/marketplace-2/2_zocuk7.png",
   },
   {
     name: "Real Estate Funding Hub",
     iconUrl: "/images/logo/refh.svg",
     imageUrl: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1723306488/preview-project/refh_dagbh4.png",
+    displacementImage: "https://res.cloudinary.com/dvnvhnoub/image/upload/v1716368304/marketplace-3/3_kdfcaa.png",
   },
 ];
 
@@ -148,7 +155,7 @@ const handlePrevProject = () => {
           :class="[{ active: index === activeProject }, `spiral-card x-${index} text-black`]"
           :data-rotation="(index - Math.floor((projects.length - 1) / 2)) * 30"
         >
-          <Project :data="project" :is-active="activeProject === index" />
+          <Project :data="project" :is-active="activeProject === index" :index="index" />
         </div>
       </div>
       <button @click="handlePrevProject" class="nav nav__prev">

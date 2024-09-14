@@ -1,10 +1,10 @@
 <script setup lang="ts">
-// import ParticleLogo from "./ParticleLogo.vue";
+import ParticleLogo from "./ParticleLogo.vue";
 </script>
 
 <template>
-  <div id="banner" class="banner h-[500px] lg:h-screen flex items-center">
-    <div class="container py-20 md:py-16 lg:py-32 grid grid-cols-5">
+  <div id="banner" class="banner h-[500px] lg:h-[90vh] flex items-center">
+    <div class="container py-20 md:py-16 lg:py-32 grid grid-cols-5 gap-5 relative">
       <div class="col-span-5 lg:col-span-3 flex flex-col items-start gradial-box">
         <p class="font-semibold text-sm xl:text-base mb-3">Hi, I am</p>
         <h1 class="font-bold text-xl md:text-3xl xl:text-5xl mb-6 mask-name">Nguyen Anh Khoa</h1>
@@ -17,8 +17,8 @@
           <button class="btn btn-primary mr-4">Contact me</button>
         </div>
       </div>
-      <div class="col-span-2">
-        <!-- <ParticleLogo /> -->
+      <div class="col-span-2 -my-20 md:-my-16 lg:-my-32">
+        <ParticleLogo />
       </div>
     </div>
   </div>
@@ -27,11 +27,5 @@
 <style lang="css" scoped>
 .banner {
   @apply bg-black;
-}
-
-.mask-name {
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  background-image: linear-gradient(132.6deg, rgba(71, 139, 214, 1) 23.3%, rgba(37, 216, 211, 1) 84.7%);
 }
 </style>

@@ -7,15 +7,16 @@ const counter = { value: 0 };
 
 onMounted(() => {
   const counterEle = document.getElementById("counter");
+  if (counterEle) {
+    const timeline = gsap.timeline();
 
-  const timeline = gsap.timeline();
+    const matchMedia = gsap.matchMedia();
 
-  new SplitType("#hello", {
-    types: "chars",
-    tagName: "span",
-  });
+    new SplitType("#hello", {
+      types: "chars",
+      tagName: "span",
+    });
 
-  counterEle &&
     timeline
       .add("loading-and-welcome", 0)
       .fromTo(
@@ -77,6 +78,7 @@ onMounted(() => {
         },
         "end-counter",
       );
+  }
 });
 </script>
 
