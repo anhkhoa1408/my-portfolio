@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import Banner from "@/components/home/Banner.vue";
-import TechStack from "@/components/home/TechStack.vue";
-import Splash from "@/components/home/Splash.vue";
+import Contact from "@/components/home/Contact.vue";
 import ProjectList from "@/components/home/ProjectList.vue";
+import Splash from "@/components/home/Splash.vue";
+import TechStack from "@/components/home/TechStack.vue";
 </script>
 
 <template>
@@ -11,5 +12,6 @@ import ProjectList from "@/components/home/ProjectList.vue";
     <Banner />
     <TechStack />
     <ProjectList />
+    <Contact />
   </main>
 </template>

@@ -23,7 +23,11 @@ const imagesData: ImageProps[] = [
   },
   {
     src: "/images/logo/tailwind.png",
-    color: 0x42d392,
+    color: 0x3abcf7,
+  },
+  {
+    src: "/images/logo/redux.png",
+    color: 0x7248b7,
   },
 ];
 

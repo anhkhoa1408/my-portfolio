@@ -147,7 +147,7 @@ const handlePrevProject = () => {
 
 <template>
   <section class="flex flex-col py-10 md:py-16 lg:py-32 bg-black">
-    <h1 class="font-bold md:text-2xl xl:text-5xl self-center mb-10 lg:mb-[100px] gradient-text">Projects</h1>
+    <h1 class="font-bold text-3xl xl:text-5xl self-center mb-10 lg:mb-[100px] gradient-text">Projects</h1>
     <div class="relative">
       <div id="projects" class="spiral-container">
         <div
