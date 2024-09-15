@@ -83,10 +83,33 @@ const stacksIcon = ref([
   },
 ]);
 
-const anim = ref();
+const lottiesAnimation = ref();
+
+const langsAndTools = [
+  "/images/javascript.svg",
+  "/images/typescript.svg",
+  "/images/vite.svg",
+  "/images/webpack.svg",
+  "/images/sass.svg",
+];
+
+const libsAndFrameworks = [
+  "/images/react.svg",
+  "/images/next-js.svg",
+  "/images/vue.svg",
+  "/images/nuxt.svg",
+  "/images/express.svg",
+  "/images/react-native.svg",
+  "/images/bootstrap.svg",
+  "/images/tailwind-css.svg",
+  "/images/tanstack-query.svg",
+];
+
+const database = ["/images/mongodb.svg"];
+
 onMounted(() => {
   setTimeout(() => {
-    anim.value.goToAndPlay(150, true);
+    lottiesAnimation.value.goToAndPlay(150, true);
   }, 500);
 
   const cardStacksEle = document.querySelectorAll(".card-stack");
@@ -210,7 +233,12 @@ const handleClickCard = (event: MouseEvent) => {
             @mouseenter="handleMouseEnterCard($event)"
             @mouseleave="handleMouseLeaveCard($event)"
           >
-            <h2 class="card-stack-title">Language and Tools</h2>
+            <h2 class="card-stack-title mb-8">Language and Tools</h2>
+            <div class="grid grid-cols-8 gap-4">
+              <div v-for="lang in langsAndTools" class="grid-cols-1">
+                <img :src="lang" class="size-12" />
+              </div>
+            </div>
           </div>
         </div>
 
@@ -222,7 +250,12 @@ const handleClickCard = (event: MouseEvent) => {
             @mouseenter="handleMouseEnterCard($event)"
             @mouseleave="handleMouseLeaveCard($event)"
           >
-            <h2 class="card-stack-title">Library and Frameworks</h2>
+            <h2 class="card-stack-title mb-8">Library and Frameworks</h2>
+            <div class="grid grid-cols-8 gap-4">
+              <div v-for="(lib, index) in libsAndFrameworks" class="grid-cols-1">
+                <img :src="lib" :class="['size-12', { 'bg-white p-1': index === 4 }]" />
+              </div>
+            </div>
           </div>
         </div>
 
@@ -234,7 +267,12 @@ const handleClickCard = (event: MouseEvent) => {
             @mouseenter="handleMouseEnterCard($event)"
             @mouseleave="handleMouseLeaveCard($event)"
           >
-            <h2 class="card-stack-title">Database</h2>
+            <h2 class="card-stack-title mb-8">Database</h2>
+            <div class="grid grid-cols-8 gap-4">
+              <div v-for="db in database" class="grid-cols-1">
+                <img :src="db" class="size-12" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -289,7 +327,6 @@ const handleClickCard = (event: MouseEvent) => {
 }
 
 .card-stack {
-  height: 200px;
   backdrop-filter: blur(25px) saturate(200%);
   -webkit-backdrop-filter: blur(25px) saturate(200%);
   background-color: #2f444473;
