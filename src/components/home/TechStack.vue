@@ -234,9 +234,9 @@ const handleClickCard = (event: MouseEvent) => {
             @mouseleave="handleMouseLeaveCard($event)"
           >
             <h2 class="card-stack-title mb-8">Language and Tools</h2>
-            <div class="grid grid-cols-8 gap-4">
-              <div v-for="lang in langsAndTools" class="grid-cols-1">
-                <img :src="lang" class="size-12" />
+            <div class="grid grid-cols-8 gap-2 lg:gap-6">
+              <div v-for="lang in langsAndTools" class="grid-cols-1 flex items-center justify-center">
+                <img :src="lang" class="size-6 lg:size-12" />
               </div>
             </div>
           </div>
@@ -251,9 +251,9 @@ const handleClickCard = (event: MouseEvent) => {
             @mouseleave="handleMouseLeaveCard($event)"
           >
             <h2 class="card-stack-title mb-8">Library and Frameworks</h2>
-            <div class="grid grid-cols-8 gap-4">
+            <div class="grid grid-cols-8 gap-2 lg:gap-6">
               <div v-for="(lib, index) in libsAndFrameworks" class="grid-cols-1">
-                <img :src="lib" :class="['size-12', { 'bg-white p-1': index === 4 }]" />
+                <img :src="lib" :class="['size-6 lg:size-12', { 'bg-white p-1': index === 4 }]" />
               </div>
             </div>
           </div>
@@ -268,9 +268,9 @@ const handleClickCard = (event: MouseEvent) => {
             @mouseleave="handleMouseLeaveCard($event)"
           >
             <h2 class="card-stack-title mb-8">Database</h2>
-            <div class="grid grid-cols-8 gap-4">
+            <div class="grid grid-cols-8 gap-2 lg:gap-6">
               <div v-for="db in database" class="grid-cols-1">
-                <img :src="db" class="size-12" />
+                <img :src="db" class="size-6 lg:size-12" />
               </div>
             </div>
           </div>
@@ -327,6 +327,7 @@ const handleClickCard = (event: MouseEvent) => {
 }
 
 .card-stack {
+  height: 250px;
   backdrop-filter: blur(25px) saturate(200%);
   -webkit-backdrop-filter: blur(25px) saturate(200%);
   background-color: #2f444473;
