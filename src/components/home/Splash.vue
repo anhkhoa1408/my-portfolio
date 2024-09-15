@@ -17,21 +17,39 @@ onMounted(() => {
       tagName: "span",
     });
 
+    matchMedia
+      .add("(max-width: 768px)", () => {
+        timeline.add("loading-and-welcome", 0).fromTo(
+          "#hello span",
+          {
+            letterSpacing: "1rem",
+            ease: "power2.out",
+            duration: 2,
+            delay: 0.5,
+          },
+          {
+            letterSpacing: "0.3rem",
+          },
+          "loading-and-welcome",
+        );
+      })
+      .add("(min-width: 768px)", () => {
+        timeline.add("loading-and-welcome", 0).fromTo(
+          "#hello span",
+          {
+            letterSpacing: "5rem",
+            ease: "power4.out",
+            duration: 2,
+            delay: 0.5,
+          },
+          {
+            letterSpacing: "0.6rem",
+          },
+          "loading-and-welcome",
+        );
+      });
+
     timeline
-      .add("loading-and-welcome", 0)
-      .fromTo(
-        "#hello span",
-        {
-          letterSpacing: "5rem",
-          ease: "power4.out",
-          duration: 2,
-          delay: 0.5,
-        },
-        {
-          letterSpacing: "0.6rem",
-        },
-        "loading-and-welcome",
-      )
       .to(
         counter,
         {
@@ -88,11 +106,14 @@ onMounted(() => {
     <div id="bottom-splash" class="h-[50%] basis-6/12 w-[100%] bg-white"></div>
     <h1
       id="hello"
-      class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-semibold z-20 [&_span]:text-primary lg:[&_span]:text-[5rem] xl:[&_span]:text-[7rem]"
+      class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-semibold z-20 [&_span]:text-primary [&_span]:text-[3rem] lg:[&_span]:text-[5rem] xl:[&_span]:text-[7rem]"
     >
       Hello
     </h1>
-    <div id="counter" class="absolute right-4 bottom-4 text-primary text-4xl font-semibold z-20"></div>
+    <div
+      id="counter"
+      class="absolute right-4 bottom-4 text-primary text-xl md:text-2xl lg:text-4xl font-semibold z-20"
+    ></div>
   </section>
 </template>
 

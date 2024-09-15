@@ -144,8 +144,8 @@ const animateParticles = () => {
 
   // Randomize Y positions
   for (let i = 1; i < positions.length; i += 3) {
+    positions[i - 1] = originalPositions?.value[i - 1] + Math.random() * 300 - 100; // Randomize X within range
     positions[i] = originalPositions?.value[i] + Math.random() * 500 - 100; // Randomize Y within range
-    positions[i - 1] = originalPositions?.value[i - 1] + Math.random() * 300 - 100; // Randomize Y within range
   }
 
   // Notify Three.js that geometry has changed
@@ -155,8 +155,8 @@ const animateParticles = () => {
     duration: 4,
     onUpdate: () => {
       for (let i = 1; i < positions.length; i += 3) {
-        positions[i] = gsap.utils.interpolate(positions[i], originalPositions?.value[i], 0.02);
         positions[i - 1] = gsap.utils.interpolate(positions[i - 1], originalPositions?.value[i - 1], 0.02);
+        positions[i] = gsap.utils.interpolate(positions[i], originalPositions?.value[i], 0.02);
       }
       geometry.attributes.position.needsUpdate = true;
     },
@@ -200,11 +200,11 @@ onUnmounted(() => {
 <style scoped>
 .particle-container {
   width: 100%;
-  height: 500px;
+  height: 100%;
   overflow: hidden;
 
   @media screen and (max-width: 576px) {
-    height: 280px;
+    height: 260px;
   }
 }
 </style>

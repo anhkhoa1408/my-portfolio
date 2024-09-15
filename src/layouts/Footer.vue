@@ -7,7 +7,7 @@
 
 <style lang="css" scoped>
 footer {
-  background: url("./../../public/images/background/wave.svg") no-repeat center;
+  background: url("/images/background/wave.svg") no-repeat center;
   background-size: cover;
   height: 400px;
   color: white;
