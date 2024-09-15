@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Banner from "@/components/home/Banner.vue";
 import Contact from "@/components/home/Contact.vue";
-import WorkingAndEducation from "@/components/home/WorkingAndEducation.vue";
+import ExperiencesAndEducation from "@/components/home/ExperiencesAndEducation.vue";
 import ProjectList from "@/components/home/ProjectList.vue";
 import TechStack from "@/components/home/TechStack.vue";
 </script>
@@ -10,7 +10,7 @@ import TechStack from "@/components/home/TechStack.vue";
   <main>
     <Banner />
     <TechStack />
-    <WorkingAndEducation />
+    <ExperiencesAndEducation />
     <ProjectList />
     <Contact />
   </main>
