@@ -28,7 +28,7 @@ onMounted(() => {
             delay: 0.5,
           },
           {
-            letterSpacing: "0.3rem",
+            letterSpacing: "0.5rem",
           },
           "loading-and-welcome",
         );
@@ -67,7 +67,7 @@ onMounted(() => {
       .to(
         "#top-splash",
         {
-          transform: "translateY(-100%)",
+          transform: "translateY(-160%)",
           duration: 0.75,
         },
         "end-counter",
@@ -75,7 +75,7 @@ onMounted(() => {
       .to(
         "#bottom-splash",
         {
-          transform: "translateY(100%)",
+          transform: "translateY(160%)",
           duration: 0.75,
         },
         "end-counter",
@@ -106,19 +106,19 @@ onMounted(() => {
     <div id="bottom-splash" class="h-[50%] basis-6/12 w-[100%] bg-white"></div>
     <h1
       id="hello"
-      class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-semibold z-20 [&_span]:text-primary [&_span]:text-[3rem] lg:[&_span]:text-[5rem] xl:[&_span]:text-[7rem]"
+      class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-semibold [&_span]:text-primary [&_span]:text-[3rem] lg:[&_span]:text-[5rem] xl:[&_span]:text-[7rem]"
     >
       Hello
     </h1>
     <div
       id="counter"
-      class="absolute right-4 bottom-4 text-primary text-xl md:text-2xl lg:text-4xl font-semibold z-20"
+      class="absolute right-4 bottom-4 text-primary text-xl md:text-2xl lg:text-4xl font-semibold"
     ></div>
   </section>
 </template>
 
 <style lang="css" scoped>
 .splash {
-  @apply overflow-hidden fixed inset-0 z-40 flex flex-col pointer-events-none;
+  @apply overflow-hidden fixed inset-0 z-[1000] flex flex-col pointer-events-none;
 }
 </style>

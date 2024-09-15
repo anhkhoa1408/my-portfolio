@@ -3,7 +3,7 @@ import { RouterLink } from "vue-router";
 </script>
 
 <template>
-  <header class="nav flex items-center justify-center w-full py-5">
+  <header class="nav flex items-center justify-center w-full py-5 sticky top-0 bg-black z-[999]">
     <RouterLink to="#about" class="nav__link">About me</RouterLink>
     <RouterLink to="#projects" class="nav__link">Projects</RouterLink>
     <RouterLink to="#contact" class="nav__link">Contact</RouterLink>

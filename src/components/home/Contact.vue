@@ -14,14 +14,14 @@ import { ArrowRightIcon } from "@heroicons/vue/16/solid";
           <Label for="email" class="mb-2">Email</Label>
           <Input
             placeholder="Your Name"
-            class="bg-transparent border-2 border-input placeholder:text-input-placeholder mb-5 lg:mb-10"
+            class="bg-transparent border-2 border-input placeholder:text-input-placeholder mb-8 lg:mb-10 text-base h-[50px]"
           />
         </div>
         <div class="grid w-full items-center gap-2">
           <Label for="email" class="mb-2">Email</Label>
           <Input
             placeholder="Your Email"
-            class="bg-transparent border-2 border-input placeholder:text-input-placeholder mb-5 lg:mb-10"
+            class="bg-transparent border-2 border-input placeholder:text-input-placeholder mb-8 lg:mb-10 text-base h-[50px]"
           />
         </div>
         <div class="grid w-full items-center gap-2 mb-6">
@@ -29,7 +29,7 @@ import { ArrowRightIcon } from "@heroicons/vue/16/solid";
           <Textarea
             rows="6"
             placeholder="Describe something"
-            class="bg-transparent border-2 border-input placeholder:text-input-placeholder"
+            class="bg-transparent border-2 border-input placeholder:text-input-placeholder text-base"
           />
         </div>
         <button class="btn btn-primary w-[120px] self-center flex items-center submit-btn overflow-hidden">
