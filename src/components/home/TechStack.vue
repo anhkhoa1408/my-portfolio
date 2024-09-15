@@ -3,6 +3,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { onMounted, ref } from "vue";
 
+import CodeJSON from "@/assets/images/animation/code.json";
+import { LottieAnimation } from "lottie-web-vue";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const stacksIcon = ref([
@@ -80,24 +83,51 @@ const stacksIcon = ref([
   },
 ]);
 
+const lottiesAnimation = ref();
+
+const langsAndTools = [
+  "/images/javascript.svg",
+  "/images/typescript.svg",
+  "/images/vite.svg",
+  "/images/webpack.svg",
+  "/images/sass.svg",
+];
+
+const libsAndFrameworks = [
+  "/images/react.svg",
+  "/images/next-js.svg",
+  "/images/vue.svg",
+  "/images/nuxt.svg",
+  "/images/express.svg",
+  "/images/react-native.svg",
+  "/images/bootstrap.svg",
+  "/images/tailwind-css.svg",
+  "/images/tanstack-query.svg",
+];
+
+const database = ["/images/mongodb.svg"];
+
 onMounted(() => {
-  // gsap.to("#stack", {
-  //   bottom: 0,
-  //   top: 0,
-  //   borderRadius: 0,
-  //   height: "100%",
-  //   duration: 1,
-  //   ease: "back",
-  //   scrollTrigger: {
-  //     trigger: "#stack",
-  //     start: "top+=200 bottom",
-  //     endTrigger: "#stack",
-  //     end: "bottom top",
-  //     scrub: false,
-  //     toggleActions: "play reverse play reverse",
-  //     markers: false,
-  //   },
-  // });
+  setTimeout(() => {
+    lottiesAnimation.value.goToAndPlay(150, true);
+  }, 500);
+
+  const cardStacksEle = document.querySelectorAll(".card-stack");
+
+  cardStacksEle.forEach((card, index, parent) => {
+    gsap.to(card, {
+      scale: 1 - (parent.length - index - 1) * 0.1,
+      top: -(parent.length - index - 1) * 25,
+      duration: 3,
+      ease: "power1.out",
+      scrollTrigger: {
+        trigger: card,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+  });
 
   const timeline = gsap.timeline({
     scrollTrigger: {
@@ -136,6 +166,36 @@ onMounted(() => {
       "fade",
     );
 });
+
+const handleMouseEnterCard = (event: MouseEvent) => {
+  gsap.to(event.target, {
+    rotate: -5,
+    translateY: -80,
+    ease: "power3.in",
+    delay: 0,
+  });
+};
+
+const handleMouseLeaveCard = (event: MouseEvent) => {
+  gsap.to(event.target, {
+    rotate: 0,
+    translateY: 0,
+    ease: "power3.in",
+    delay: 0,
+  });
+};
+
+const handleClickCard = (event: MouseEvent) => {
+  const detailStackEle = document.getElementById("detail-stack");
+  const dataIndex = parseFloat((event.currentTarget as HTMLDivElement)?.dataset?.index || "1");
+
+  if (!detailStackEle) return;
+
+  window.scrollTo({
+    top: detailStackEle?.offsetTop - 150 + (detailStackEle.offsetHeight * (dataIndex - 1)) / 3,
+    behavior: "smooth",
+  });
+};
 </script>
 
 <template>
@@ -159,6 +219,66 @@ onMounted(() => {
           <div class="circle circle-middle">
             <div class="circle circle-inner"></div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="detail-stack" class="container mx-auto py-10 md:py-16 lg:py-32 grid grid-cols-2 gap-4">
+      <div class="col-span-2 md:col-span-1 flex flex-col justify-between h-[1500px]">
+        <div class="sticky top-[250px]">
+          <div
+            data-index="1"
+            class="card-stack"
+            @click="handleClickCard($event)"
+            @mouseenter="handleMouseEnterCard($event)"
+            @mouseleave="handleMouseLeaveCard($event)"
+          >
+            <h2 class="card-stack-title mb-8">Language and Tools</h2>
+            <div class="grid grid-cols-8 gap-4">
+              <div v-for="lang in langsAndTools" class="grid-cols-1">
+                <img :src="lang" class="size-12" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sticky top-[250px]">
+          <div
+            data-index="2"
+            class="card-stack"
+            @click="handleClickCard($event)"
+            @mouseenter="handleMouseEnterCard($event)"
+            @mouseleave="handleMouseLeaveCard($event)"
+          >
+            <h2 class="card-stack-title mb-8">Library and Frameworks</h2>
+            <div class="grid grid-cols-8 gap-4">
+              <div v-for="(lib, index) in libsAndFrameworks" class="grid-cols-1">
+                <img :src="lib" :class="['size-12', { 'bg-white p-1': index === 4 }]" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sticky top-[250px]">
+          <div
+            data-index="3"
+            class="card-stack"
+            @click="handleClickCard($event)"
+            @mouseenter="handleMouseEnterCard($event)"
+            @mouseleave="handleMouseLeaveCard($event)"
+          >
+            <h2 class="card-stack-title mb-8">Database</h2>
+            <div class="grid grid-cols-8 gap-4">
+              <div v-for="db in database" class="grid-cols-1">
+                <img :src="db" class="size-12" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-2 md:col-span-1">
+        <div class="[&>div]:h-[250px] md:[&>div]:h-[400px] lg:[&>div]:h-[450px] sticky top-[150px]">
+          <LottieAnimation :animation-data="CodeJSON" :auto-play="true" :loop="true" :speed="0.5" ref="anim" />
         </div>
       </div>
     </div>
@@ -203,6 +323,17 @@ onMounted(() => {
   @media screen and (max-width: 576px) {
     width: 40px !important;
     height: 40px !important;
+  }
+}
+
+.card-stack {
+  backdrop-filter: blur(25px) saturate(200%);
+  -webkit-backdrop-filter: blur(25px) saturate(200%);
+  background-color: #2f444473;
+  @apply rounded-md py-6 px-4 relative duration-200 ease-in-out cursor-pointer;
+
+  .card-stack-title {
+    @apply text-white text-2xl font-semibold;
   }
 }
 

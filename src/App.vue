@@ -6,8 +6,8 @@ import Splash from "./components/home/Splash.vue";
 </script>
 
 <template>
-  <Header />
   <Splash />
+  <Header />
   <RouterView />
   <Footer />
 </template>

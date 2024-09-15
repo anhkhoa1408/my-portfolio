@@ -11,7 +11,7 @@ import { ArrowRightIcon } from "@heroicons/vue/16/solid";
       <h1 class="font-bold text-3xl xl:text-5xl mb-10 self-center text-center gradient-text">Contact</h1>
       <div class="w-full md:w-8/12 lg:w-6/12 mx-auto flex flex-col">
         <div class="grid w-full items-center gap-2">
-          <Label for="email" class="mb-2">Email</Label>
+          <Label for="email" class="mb-2">Name</Label>
           <Input
             placeholder="Your Name"
             class="bg-transparent border-2 border-input placeholder:text-input-placeholder mb-8 lg:mb-10 text-base h-[50px]"
@@ -34,7 +34,7 @@ import { ArrowRightIcon } from "@heroicons/vue/16/solid";
         </div>
         <button class="btn btn-primary w-[120px] self-center flex items-center submit-btn overflow-hidden">
           <span>Submit</span>
-          <span><ArrowRightIcon class="size-6" /></span>
+          <span><ArrowRightIcon class="size-4" /></span>
         </button>
       </div>
     </div>
