@@ -1,4 +1,4 @@
-<script></script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="flex flex-col bg-glass px-6 py-4 gap-3 rounded-md">
