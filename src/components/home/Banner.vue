@@ -15,7 +15,7 @@ onMounted(() => {
     scrollTrigger: {
       trigger: "#intro-text",
       start: "top 60%",
-      end: "top 30%",
+      end: "top 10%",
       scrub: true,
     },
     stagger: 0.2,
@@ -43,7 +43,7 @@ onMounted(() => {
         <ParticleLogo />
       </div>
     </div>
-    <div class="container flex items-center justify-center mt-[100px] sm:mt-0 lg:h-[650px]">
+    <div class="container flex items-center justify-center mt-[100px] sm:mt-0 lg:h-[750px]">
       <p
         id="intro-text"
         class="leading-relaxed md:leading-relaxed xl:leading-relaxed text-sm md:text-2xl xl:text-3xl font-semibold text-center"
