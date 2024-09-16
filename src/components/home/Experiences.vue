@@ -11,7 +11,7 @@
       <p class="gradient-text text-sm lg:text-base">Vietnam Blockchain Corporation</p>
       <div class="hidden lg:block bg-primary px-2 py-1 text-xs">Full-time</div>
     </div>
-    <div class="flex items-center gap-4 text-sm">
+    <div class="flex items-center gap-3 text-sm">
       <p>April 2021</p>
       <p class="h-[1px] w-[10px] bg-secondary"></p>
       <p>April 2024</p>
