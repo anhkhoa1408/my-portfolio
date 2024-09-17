@@ -7,6 +7,7 @@ interface CardData {
   iconUrl: string;
   imageUrl: string;
   displacementImage: string;
+  url: string;
 }
 
 const { data, isActive, index } = defineProps<{
@@ -26,11 +27,20 @@ onMounted(() => {
     displacementImage: data.imageUrl,
   });
 });
+
+const openProjectLink = () => {
+  window.open(data.url);
+};
 </script>
 
 <template>
-  <div class="project-card-logo-effect"></div>
-  <div :class="['project-card animate-border', { active: isActive }]">
+  <div class="project-card-logo-effect cursor-pointer" @click="openProjectLink"></div>
+  <a
+    :href="data.url"
+    target="_black"
+    rel="noopener noreferer"
+    :class="['project-card animate-border', { active: isActive }]"
+  >
     <div class="project-card-inner">
       <div class="h-[200px] mb-2"></div>
       <div class="flex items-center justify-between">
@@ -38,7 +48,7 @@ onMounted(() => {
         <p class="text-xs text-white font-medium">{{ data.name }}</p>
       </div>
     </div>
-  </div>
+  </a>
 </template>
 
 <style lang="css" scoped>

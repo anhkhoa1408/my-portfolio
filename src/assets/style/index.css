@@ -1,5 +1,6 @@
 @import "./utils/base.css";
 @import "./components/base.css";
+@import "./widgets/base.css";
 
 @tailwind base;
 @tailwind components;

@@ -1,4 +1,3 @@
-textarea:user-invalid,
-input:user-invalid {
-  @apply !border-red-600;
-}
+/* textarea:not([value=""]):user-invalid,
+input:not([value=""]):user-invalid {
+} */
