@@ -7,7 +7,11 @@
       <div class="lg:block hidden size-2 bg-blue-500 rounded-full"></div>
       <p class="gradient-text text-sm lg:text-base">Ho Chi Minh City University of Technology (HCMUT)</p>
     </div>
-    <p class="text-sm">GPA: <strong>7.07</strong> <i>(7.07/10)</i></p>
+    <div class="flex items-center gap-3 text-sm">
+      <p>August 2018</p>
+      <p class="h-[1px] w-[10px] bg-secondary"></p>
+      <p>April 2024</p>
+    </div>
   </div>
 </template>
 

@@ -1,11 +1,11 @@
 .btn {
-  @apply outline-none bg-white active:opacity-50 min-h-[40px] lg:min-h-[50px] px-4 py-2 lg:px-6 lg:py-3 text-sm lg:text-base font-semibold text-white rounded-md;
+  @apply outline-none bg-white active:opacity-50 min-h-[40px] lg:min-h-[50px] px-4 py-2 lg:px-6 lg:py-3 text-sm lg:text-base font-semibold text-white rounded-md disabled:opacity-50;
 
   &.btn-primary {
     @apply ease-linear duration-300;
     background-image: linear-gradient(132.6deg, #478bd6 23.3%, #25d8d3 84.7%);
 
-    &:hover {
+    &:not(:disabled):hover {
       background-image: linear-gradient(47.4deg, #478bd6 23.3%, #25d8d3 84.7%);
     }
   }

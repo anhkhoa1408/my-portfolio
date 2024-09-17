@@ -4,6 +4,8 @@ import ParticleLogo from "./ParticleLogo.vue";
 import gsap from "gsap";
 import TextPlugin from "gsap/TextPlugin";
 import SplitType from "split-type";
+import { RouterLink } from "vue-router";
+import { appConfigs } from "@/configs/app";
 
 gsap.registerPlugin(TextPlugin);
 
@@ -64,14 +66,16 @@ onMounted(() => {
   <section id="banner" class="banner flex flex-col py-24 md:py-16 lg:py-32">
     <div class="container grid grid-cols-5 gap-10 lg:gap-5 relative">
       <div class="col-span-5 lg:col-span-3 flex flex-col items-start gradial-box">
-        <p class="font-semibold text-sm xl:text-base mb-3">Hello, my name is</p>
-        <h1 class="font-bold text-3xl md:text-3xl xl:text-5xl mb-6 gradient-text">Nguyen Anh Khoa</h1>
-        <p class="leading-relaxed text-2xl xl:text-3xl mb-6">
+        <p class="font-semibold text-sm md:text-base xl:text-xl mb-3">Hello, my name is</p>
+        <h1 class="font-bold text-3xl md:text-4xl xl:text-6xl mb-4 lg:mb-6 gradient-text">Nguyen Anh Khoa</h1>
+        <p class="leading-relaxed text-xl md:text-3xl xl:text-3xl mb-6">
           <span id="animated-text"></span>
           <span id="cursor"> _</span>
         </p>
         <div>
-          <button class="btn btn-primary mr-4">Contact me</button>
+          <a class="btn btn-primary mr-4" target="_blank" rel="noopener noreferer" :href="appConfigs.facebookUrl">
+            Contact me
+          </a>
         </div>
       </div>
       <div class="col-span-5 lg:col-span-2">

@@ -1,0 +1,4 @@
+textarea:user-invalid,
+input:user-invalid {
+  @apply !border-red-600;
+}

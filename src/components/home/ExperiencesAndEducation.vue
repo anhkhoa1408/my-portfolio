@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import BlockBackground from "./BlockBackground.vue";
 import Experiences from "./Experiences.vue";
 import Education from "./Education.vue";
 
@@ -7,7 +8,8 @@ const activeTab = ref(0);
 </script>
 
 <template>
-  <section id="work-exp" class="bg-black">
+  <section id="exp-and-edu" class="bg-black relative">
+    <BlockBackground />
     <div class="container mx-auto py-10 md:py-16 lg:py-32 flex flex-col">
       <h1 class="font-bold text-3xl xl:text-5xl mb-10 self-center text-center gradient-text">
         Experiences And Education
