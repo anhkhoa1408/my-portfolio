@@ -1,8 +1,23 @@
 <script setup lang="ts">
+import Lenis from "lenis";
+import { onMounted } from "vue";
 import { RouterView } from "vue-router";
-import Header from "./layouts/Header.vue";
-import Footer from "./layouts/Footer.vue";
 import Splash from "./components/home/Splash.vue";
+import Footer from "./layouts/Footer.vue";
+import Header from "./layouts/Header.vue";
+
+onMounted(() => {
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  });
+
+  function raf(time: number) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  raf(2000);
+});
 </script>
 
 <template>
