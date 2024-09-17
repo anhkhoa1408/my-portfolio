@@ -5,6 +5,7 @@ import { ArrowRightIcon } from "@heroicons/vue/16/solid";
 import { ref, watch } from "vue";
 import { Label } from "../ui/label";
 import { appConfigs } from "@/configs/app";
+import { toast } from "vue3-toastify";
 
 const name = ref("");
 const email = ref("");
@@ -13,11 +14,19 @@ const description = ref("");
 const valid = ref(false);
 
 watch([name, email, description], () => {
-  const formEle = document.querySelector("#contact-form") as HTMLFormElement;
-  const isInputValid = Array.from(formEle.querySelectorAll("input")).every((input) => input.checkValidity());
-  const isTextareaValid = Array.from(formEle.querySelectorAll("textarea")).every((input) => input.checkValidity());
-  valid.value = isInputValid && isTextareaValid;
+  if (name.value && email.value && description.value) {
+    const formEle = document.querySelector("#contact-form") as HTMLFormElement;
+    const isInputValid = Array.from(formEle.querySelectorAll("input")).every((input) => input.checkValidity());
+    const isTextareaValid = Array.from(formEle.querySelectorAll("textarea")).every((input) => input.checkValidity());
+    valid.value = isInputValid && isTextareaValid;
+  }
 });
+
+const handleResetForm = () => {
+  name.value = "";
+  email.value = "";
+  description.value = "";
+};
 
 const handleSubmit = async () => {
   const data = {
@@ -27,25 +36,48 @@ const handleSubmit = async () => {
     description: description.value,
   };
 
-  await fetch(appConfigs.mailerHost.concat("/api/v1/email/send") || "", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-api-key": appConfigs.mailerApiKey,
-    },
-    body: JSON.stringify(data),
-  });
+  try {
+    const response = await fetch(appConfigs.mailerHost.concat("/api/v1/email/send") || "", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": appConfigs.mailerApiKey,
+      },
+      body: JSON.stringify(data),
+    });
+    if (response?.status === 200) {
+      toast("Successfully send!", {
+        autoClose: 1000,
+        theme: "dark",
+        type: "success",
+      });
+    } else {
+      toast("Failed to send, please try again later!", {
+        autoClose: 1000,
+        theme: "dark",
+        type: "error",
+      });
+    }
+    handleResetForm();
+  } catch (error) {
+    toast("Failed to send, please try again later!", {
+      autoClose: 1000,
+      theme: "dark",
+      type: "error",
+    });
+  }
 };
 </script>
 
 <template>
-  <section>
+  <section id="contact">
     <div class="container mx-auto py-10 md:py-16 lg:py-32 flex flex-col">
       <h1 class="font-bold text-3xl xl:text-5xl mb-10 self-center text-center gradient-text">Contact</h1>
       <form id="contact-form" @submit.prevent="handleSubmit" class="w-full md:w-8/12 lg:w-6/12 mx-auto flex flex-col">
         <div class="grid w-full items-center gap-2">
-          <Label for="email" class="mb-2">Name</Label>
+          <Label for="name" class="mb-2">Name</Label>
           <Input
+            :model-value="name"
             required
             type="text"
             v-model="name"
@@ -56,6 +88,7 @@ const handleSubmit = async () => {
         <div class="grid w-full items-center gap-2">
           <Label for="email" class="mb-2">Email</Label>
           <Input
+            :model-value="email"
             required
             type="email"
             v-model="email"
@@ -64,8 +97,9 @@ const handleSubmit = async () => {
           />
         </div>
         <div class="grid w-full items-center gap-2 mb-6">
-          <Label for="email" class="mb-2">Description</Label>
+          <Label for="description" class="mb-2">Description</Label>
           <Textarea
+            :model-value="description"
             required
             type="text"
             v-model="description"
