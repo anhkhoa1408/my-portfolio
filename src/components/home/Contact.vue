@@ -77,7 +77,6 @@ const handleSubmit = async () => {
         <div class="grid w-full items-center gap-2">
           <Label for="name" class="mb-2">Name</Label>
           <Input
-            :model-value="name"
             required
             type="text"
             v-model="name"
@@ -88,7 +87,6 @@ const handleSubmit = async () => {
         <div class="grid w-full items-center gap-2">
           <Label for="email" class="mb-2">Email</Label>
           <Input
-            :model-value="email"
             required
             type="email"
             v-model="email"
@@ -99,7 +97,6 @@ const handleSubmit = async () => {
         <div class="grid w-full items-center gap-2 mb-6">
           <Label for="description" class="mb-2">Description</Label>
           <Textarea
-            :model-value="description"
             required
             type="text"
             v-model="description"
