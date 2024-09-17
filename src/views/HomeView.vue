@@ -4,6 +4,7 @@ import Contact from "@/components/home/Contact.vue";
 import ExperiencesAndEducation from "@/components/home/ExperiencesAndEducation.vue";
 import ProjectList from "@/components/home/ProjectList.vue";
 import TechStack from "@/components/home/TechStack.vue";
+import Collaboration from "@/components/home/Collaboration.vue";
 </script>
 
 <template>
@@ -12,6 +13,7 @@ import TechStack from "@/components/home/TechStack.vue";
     <TechStack />
     <ExperiencesAndEducation />
     <ProjectList />
+    <Collaboration />
     <Contact />
   </main>
 </template>

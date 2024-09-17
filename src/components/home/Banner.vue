@@ -68,7 +68,7 @@ onMounted(() => {
       <div class="col-span-5 lg:col-span-3 flex flex-col items-start gradial-box">
         <p class="font-semibold text-sm md:text-base xl:text-xl mb-3">Hello, my name is</p>
         <h1 class="font-bold text-3xl md:text-4xl xl:text-6xl mb-4 lg:mb-6 gradient-text">Nguyen Anh Khoa</h1>
-        <p class="leading-relaxed text-xl md:text-3xl xl:text-3xl mb-6">
+        <p class="leading-relaxed text-xl md:text-3xl xl:text-3xl mb-6 md:mb-10">
           <span id="animated-text"></span>
           <span id="cursor"> _</span>
         </p>
