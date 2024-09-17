@@ -203,6 +203,7 @@ onUnmounted(() => {
           <Project :data="project" :is-active="activeProject === index" :index="index" />
         </div>
       </div>
+
       <button @click="handlePrevProject" class="nav nav__prev">
         <ChevronLeftIcon class="w-[30px] h-[30px]" />
       </button>
