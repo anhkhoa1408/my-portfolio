@@ -200,12 +200,8 @@ onUnmounted(() => {
 <style scoped>
 .particle-container {
   width: 100%;
-  height: 100%;
+  height: 260px;
   overflow: hidden;
-
-  @media screen and (max-width: 576px) {
-    height: 260px;
-  }
 }
 </style>
 

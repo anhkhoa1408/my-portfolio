@@ -4,6 +4,8 @@ import ParticleLogo from "./ParticleLogo.vue";
 import gsap from "gsap";
 import TextPlugin from "gsap/TextPlugin";
 import SplitType from "split-type";
+import { RouterLink } from "vue-router";
+import { appConfigs } from "@/configs/app";
 
 gsap.registerPlugin(TextPlugin);
 
@@ -71,7 +73,9 @@ onMounted(() => {
           <span id="cursor"> _</span>
         </p>
         <div>
-          <button class="btn btn-primary mr-4">Contact me</button>
+          <a class="btn btn-primary mr-4" target="_blank" rel="noopener noreferer" :href="appConfigs.facebookUrl">
+            Contact me
+          </a>
         </div>
       </div>
       <div class="col-span-5 lg:col-span-2">
