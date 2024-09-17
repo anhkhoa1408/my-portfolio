@@ -10,7 +10,7 @@ const activeTab = ref(0);
 <template>
   <section id="exp-and-edu" class="bg-black relative">
     <BlockBackground />
-    <div class="container mx-auto py-10 md:py-16 lg:py-32 flex flex-col">
+    <div class="container mx-auto py-10 md:py-16 lg:py-32 flex flex-col z-1">
       <h1 class="font-bold text-3xl xl:text-5xl mb-10 self-center text-center gradient-text">
         Experiences And Education
       </h1>
