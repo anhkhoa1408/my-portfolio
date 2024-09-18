@@ -183,7 +183,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div id="work-projects" class="flex flex-col mt-5">
+  <div id="work-projects" class="flex flex-col mt-5 w-full">
     <div
       id="cursor-detail"
       class="cursor-detail flex items-center text-sm border-2 border-solid border-secondary-50 rounded-md"
@@ -243,6 +243,12 @@ onUnmounted(() => {
 
   &:hover {
     @apply bg-primary-900;
+  }
+
+  @media screen and (max-width: 767px) {
+    & {
+      @apply bg-primary-900;
+    }
   }
 
   &:active {

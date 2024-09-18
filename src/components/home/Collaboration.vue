@@ -25,8 +25,8 @@ onMounted(() => {
     },
     scrollTrigger: {
       trigger: "#collaboration",
-      start: "top 70%",
-      end: "bottom 60%",
+      start: "top 50%",
+      end: "bottom top",
       scrub: true,
     },
   });

@@ -22,13 +22,13 @@ onMounted(() => {
         timeline.add("loading-and-welcome", 0).fromTo(
           "#hello span",
           {
-            letterSpacing: "1rem",
+            letterSpacing: "0.7rem",
             ease: "power2.out",
             duration: 2,
             delay: 0.5,
           },
           {
-            letterSpacing: "0.5rem",
+            letterSpacing: "0.4rem",
           },
           "loading-and-welcome",
         );

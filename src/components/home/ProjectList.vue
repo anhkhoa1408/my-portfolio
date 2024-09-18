@@ -20,7 +20,10 @@ const tabs = [
 </script>
 
 <template>
-  <section id="projects" class="flex flex-col py-10 md:py-16 lg:py-32 bg-black">
+  <section
+    id="projects"
+    :class="['flex flex-col py-10 md:py-16 lg:py-32 bg-black', { 'lg:h-[1360px]': activeTab === 1 }]"
+  >
     <h1 class="font-bold text-3xl xl:text-5xl self-center mb-10 gradient-text">Projects</h1>
     <Tab :tabs="tabs" v-model:active-tab="activeTab" />
   </section>

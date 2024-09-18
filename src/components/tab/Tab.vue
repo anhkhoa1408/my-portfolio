@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, type Component, KeepAlive } from "vue";
+import { KeepAlive, type Component } from "vue";
 
 const { tabs } = defineProps({
   tabs: {
