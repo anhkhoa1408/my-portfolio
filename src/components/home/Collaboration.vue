@@ -23,10 +23,9 @@ onMounted(() => {
     onUpdate: function () {
       gradientTextEle.style.background = `linear-gradient(90deg, #FFF 0%, #FFF 50%, #25d8d3 51%, #25d8d3 100%) ${gradientPercentage.value.toString()}% / 200% 100% text`;
     },
-
     scrollTrigger: {
       trigger: "#collaboration",
-      start: "top 30%",
+      start: "top 70%",
       end: "bottom 60%",
       scrub: true,
     },
@@ -39,7 +38,7 @@ onMounted(() => {
     <TextMarquee children="Frontend Developer" :reverse="true" />
     <h1 class="text-2xl lg:text-4xl font-bold self-center lg:my-5">
       <span class="text-white">Contact to </span>
-      <span id="collaborate-text" class="text-white">collaborate?</span>
+      <span id="collaborate-text">collaborate?</span>
     </h1>
     <TextMarquee children="Software Engineer" />
   </section>

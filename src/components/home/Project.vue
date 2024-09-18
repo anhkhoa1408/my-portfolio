@@ -29,17 +29,17 @@ onMounted(() => {
 });
 
 const openProjectLink = () => {
-  window.open(data.url);
+  data.url && window.open(data.url);
 };
 </script>
 
 <template>
-  <div class="project-card-logo-effect cursor-pointer" @click="openProjectLink"></div>
+  <div :class="['project-card-logo-effect', { 'cursor-pointer': data.url }]" @click="openProjectLink"></div>
   <a
     :href="data.url"
     target="_black"
     rel="noopener noreferer"
-    :class="['project-card animate-border', { active: isActive }]"
+    :class="['project-card animate-border', { active: isActive, 'pointer-events-none': !data.url }]"
   >
     <div class="project-card-inner">
       <div class="h-[200px] mb-2"></div>

@@ -8,7 +8,7 @@ import Header from "./layouts/Header.vue";
 
 onMounted(() => {
   const lenis = new Lenis({
-    duration: 1.2,
+    duration: 2,
   });
   function raf(time: number) {
     lenis.raf(time);

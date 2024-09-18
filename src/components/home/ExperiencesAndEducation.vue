@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import BlockBackground from "./BlockBackground.vue";
-import Experiences from "./Experiences.vue";
-import Education from "./Education.vue";
 import Tab from "@/components/tab/Tab.vue";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { onMounted, ref } from "vue";
+import BlockBackground from "./BlockBackground.vue";
+import Education from "./Education.vue";
+import Experiences from "./Experiences.vue";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const activeTab = ref(0);
 
@@ -11,6 +15,23 @@ const tabs = [
   { name: "Experience", component: Experiences },
   { name: "Education", component: Education },
 ];
+
+onMounted(() => {
+  gsap.to("body", {
+    scrollTrigger: {
+      trigger: "#exp-and-edu",
+      start: "top 20%",
+      end: "top 30%",
+      toggleActions: "play reverse play reverse",
+      onLeave: () => {
+        activeTab.value = 1;
+      },
+      onLeaveBack: () => {
+        activeTab.value = 0;
+      },
+    },
+  });
+});
 </script>
 
 <template>

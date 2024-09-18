@@ -116,18 +116,24 @@ onMounted(() => {
   const cardStacksEle = document.querySelectorAll(".card-stack");
 
   cardStacksEle.forEach((card, index, parent) => {
-    gsap.to(card, {
-      scale: 1 - (parent.length - index - 1) * 0.1,
-      top: -(parent.length - index - 1) * 25,
-      duration: 3,
-      ease: "power1.out",
-      scrollTrigger: {
-        trigger: card,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
+    gsap.fromTo(
+      card,
+      {
+        scale: 1 + index * 0.05,
       },
-    });
+      {
+        scale: 1 + index * 0.05 - 0.05,
+        top: -(parent.length - index - 1) * 30,
+        duration: 3,
+        ease: "power3",
+        scrollTrigger: {
+          trigger: card,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      },
+    );
   });
 
   const timeline = gsap.timeline({
@@ -279,7 +285,7 @@ const handleClickCard = (event: MouseEvent) => {
       </div>
       <div class="col-span-2 md:col-span-1">
         <div class="[&>div]:h-[250px] md:[&>div]:h-[400px] lg:[&>div]:h-[450px] sticky top-[150px]">
-          <LottieAnimation :animation-data="CodeJSON" :auto-play="true" :loop="true" :speed="0.5" ref="anim" />
+          <LottieAnimation :animation-data="CodeJSON" :auto-play="true" :loop="true" :speed="0.1" ref="anim" />
         </div>
       </div>
     </div>

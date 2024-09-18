@@ -156,7 +156,7 @@ const showProjectCursor = (e: MouseEvent) => {
 
   if (!cursorEle) return;
 
-  if (targetEle.closest(".spiral-card")) {
+  if (targetEle.closest(".spiral-card") && (targetEle?.closest(".spiral-card") as any)?.dataset?.url) {
     cursorEle.style.left = e.clientX + cursorEle.clientWidth / 2 + "px";
     cursorEle.style.top = e.clientY - cursorEle.clientHeight / 2 + "px";
     cursorEle.style.opacity = "1";
@@ -196,6 +196,7 @@ onUnmounted(() => {
       <div id="projects-wrap" class="spiral-container">
         <div
           v-for="(project, index) of projects"
+          :data-url="project.url"
           :key="index"
           :class="[{ active: index === activeProject }, `spiral-card x-${index} text-black`]"
           :data-rotation="(index - Math.floor((projects.length - 1) / 2)) * 30"

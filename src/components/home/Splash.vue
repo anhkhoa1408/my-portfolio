@@ -18,7 +18,7 @@ onMounted(() => {
     });
 
     matchMedia
-      .add("(max-width: 768px)", () => {
+      .add("(max-width: 767px)", () => {
         timeline.add("loading-and-welcome", 0).fromTo(
           "#hello span",
           {
@@ -39,7 +39,7 @@ onMounted(() => {
           {
             letterSpacing: "5rem",
             ease: "power4.out",
-            duration: 2,
+            duration: 2.5,
             delay: 0.5,
           },
           {
