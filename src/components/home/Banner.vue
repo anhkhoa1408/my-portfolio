@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
-import ParticleLogo from "./ParticleLogo.vue";
+import { appConfigs } from "@/configs/app";
 import gsap from "gsap";
 import TextPlugin from "gsap/TextPlugin";
 import SplitType from "split-type";
-import { RouterLink } from "vue-router";
-import { appConfigs } from "@/configs/app";
+import { onMounted } from "vue";
+import ParticleLogo from "./ParticleLogo.vue";
 
 gsap.registerPlugin(TextPlugin);
 
@@ -72,11 +71,20 @@ onMounted(() => {
           <span id="animated-text"></span>
           <span id="cursor"> _</span>
         </p>
-        <div>
-          <a class="btn btn-primary mr-4" target="_blank" rel="noopener noreferer" :href="appConfigs.facebookUrl">
-            Contact me
+        <div class="grid grid-cols-3 gap-4 mb-6">
+          <a :href="appConfigs.facebookUrl" target="_blank" rel="noopener noreferer" class="col-span-1">
+            <img src="/images/social/facebook.svg" />
+          </a>
+          <a :href="appConfigs.linkedinUrl" target="_blank" rel="noopener noreferer" class="col-span-1">
+            <img src="/images/social/linkedin.svg" />
+          </a>
+          <a :href="appConfigs.githubUrl" target="_blank" rel="noopener noreferer" class="col-span-1">
+            <img src="/images/social/github.svg" />
           </a>
         </div>
+        <a class="btn btn-primary mr-4" target="_blank" rel="noopener noreferer" :href="appConfigs.facebookUrl">
+          Contact me
+        </a>
       </div>
       <div class="col-span-5 lg:col-span-2">
         <ParticleLogo />
