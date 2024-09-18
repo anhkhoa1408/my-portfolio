@@ -10,6 +10,9 @@ import { templateCompilerOptions } from "@tresjs/core";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  esbuild: {
+    drop: ["console", "debugger"],
+  },
   css: {
     postcss: {
       plugins: [tailwind(), autoprefixer()],
