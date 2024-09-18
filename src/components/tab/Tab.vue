@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, type Component } from "vue";
+import { ref, type Component, KeepAlive } from "vue";
 
 const { tabs } = defineProps({
   tabs: {
@@ -17,14 +17,16 @@ const activeTab = defineModel<number>("activeTab", { required: true });
 <template>
   <div
     :style="{ '--left': `${activeTab * 100}%`, '--width': `calc(100% / ${tabs.length})` }"
-    class="self-center flex items-center justify-center tab mb-10"
+    class="self-center flex items-center justify-center tab mb-10 shrink-0"
   >
     <template v-for="(tab, index) in tabs">
       <button @click="activeTab = index" class="tab-item">{{ tab.name }}</button>
     </template>
   </div>
 
-  <component :is="tabs[activeTab].component"></component>
+  <KeepAlive>
+    <component :is="tabs[activeTab].component"></component>
+  </KeepAlive>
 </template>
 
 <style lang="css" scoped>
