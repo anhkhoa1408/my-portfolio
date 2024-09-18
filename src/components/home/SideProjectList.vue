@@ -52,9 +52,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <id id="side-projects" class="flex overflow-x-hidden flex-nowrap gap-10 px-10">
+  <id id="side-projects" class="flex overflow-x-hidden flex-nowrap gap-4 lg:gap-10 px-5 lg:px-10">
     <template v-for="(project, index) in projects" :key="index">
-      <div class="flex-none h-[300px] bg-white rounded-lg w-[450px] side-project transform-gpu overflow-hidden">
+      <div
+        class="flex-none w-[320px] h-[250px] lg:h-[300px] lg:w-[450px] bg-white rounded-lg side-project transform-gpu overflow-hidden"
+      >
         <img
           :class="['w-full h-full object-cover object-left-top rounded-lg overflow-hidden', project.class]"
           :src="project.imageUrl"
