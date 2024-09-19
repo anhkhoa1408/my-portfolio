@@ -38,28 +38,43 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <header class="nav container hidden lg:flex items-center justify-center w-full py-5 sticky top-0 bg-black z-[900]">
+  <header class="nav hidden lg:flex items-center justify-center w-full py-5 sticky top-0 bg-black z-[900]">
     <a to="#about" class="nav__link" @click="scrollToSection('banner')">About me</a>
     <a to="#projects" class="nav__link" @click="scrollToSection('projects')">Projects</a>
     <a to="#contact" class="nav__link" @click="scrollToSection('contact')">Contact</a>
   </header>
   <div id="header-mobile" class="container py-5 flex lg:hidden items-center justify-start sticky top-0 z-[901]">
-    <div @click="openSidebar = !openSidebar" class="z-10">
-      <Bars2Icon v-if="!openSidebar" class="size-6 text-white" />
-      <XMarkIcon v-else class="size-6 text-white" />
+    <div @click="openSidebar = !openSidebar" class="z-10 cursor-pointer">
+      <Bars2Icon v-if="!openSidebar" class="size-6 text-white z-10" />
+      <XMarkIcon v-else class="size-6 text-white z-10" />
     </div>
     <div
       :class="[
         'flex lg:hidden flex-col items-center justify-center gap-5 fixed h-screen ease-linear duration-200 inset-0 will-change-transform',
         {
-          'translate-y-0 bg-[rgba(0,0,0,0.8)]': openSidebar,
+          'translate-y-0 bg-[rgba(0,0,0,0.6)]': openSidebar,
           'translate-y-[-100%]': !openSidebar,
         },
       ]"
     >
-      <a to="#about" class="nav__link z-10 text-base text-white" @click="scrollToSection('banner')">About me</a>
-      <a to="#projects" class="nav__link z-10 text-base text-white" @click="scrollToSection('projects')">Projects</a>
-      <a to="#contact" class="nav__link z-10 text-base text-white" @click="scrollToSection('contact')">Contact</a>
+      <a
+        to="#about"
+        class="nav__link z-10 text-base md:text-xl cursor-pointer text-white"
+        @click="scrollToSection('banner')"
+        >About me</a
+      >
+      <a
+        to="#projects"
+        class="nav__link z-10 text-base md:text-xl cursor-pointer text-white"
+        @click="scrollToSection('projects')"
+        >Projects</a
+      >
+      <a
+        to="#contact"
+        class="nav__link z-10 text-base md:text-xl cursor-pointer text-white"
+        @click="scrollToSection('contact')"
+        >Contact</a
+      >
     </div>
   </div>
 </template>
