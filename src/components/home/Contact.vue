@@ -17,6 +17,7 @@ const email = ref("");
 const description = ref("");
 
 const valid = ref(false);
+const submitting = ref(false);
 
 useTextReveal("#contact-title");
 
@@ -36,11 +37,23 @@ const handleResetForm = () => {
 };
 
 const handleSubmit = async () => {
+  submitting.value = true;
+
+  const toastId = toast.loading("Sending contact information", {
+    theme: "dark",
+  });
+
   const data = {
     name: name.value,
     from: email.value,
     to: appConfigs.receiverEmail,
     description: description.value,
+    contactMetadata: {
+      main: appConfigs.facebookUrl,
+      facebook: appConfigs.facebookUrl,
+      instagram: appConfigs.instagramUrl,
+      linkedin: appConfigs.linkedinUrl,
+    },
   };
 
   try {
@@ -53,25 +66,33 @@ const handleSubmit = async () => {
       body: JSON.stringify(data),
     });
     if (response?.status === 200) {
-      toast("Successfully send!", {
+      toast.update(toastId, {
+        render: "Successfully send!",
         autoClose: 1000,
-        theme: "dark",
         type: "success",
-      });
-    } else {
-      toast("Failed to send, please try again later!", {
-        autoClose: 1000,
         theme: "dark",
+        isLoading: false,
+      });
+      handleResetForm();
+    } else {
+      toast.update(toastId, {
+        render: "Failed to send, please try again later!",
+        autoClose: 1000,
         type: "error",
+        theme: "dark",
+        isLoading: false,
       });
     }
-    handleResetForm();
   } catch (error) {
-    toast("Failed to send, please try again later!", {
+    toast.update(toastId, {
+      render: "Failed to send, please try again later!",
       autoClose: 1000,
-      theme: "dark",
       type: "error",
+      theme: "dark",
+      isLoading: false,
     });
+  } finally {
+    submitting.value = false;
   }
 };
 
@@ -136,7 +157,7 @@ onMounted(() => {
           />
         </div>
         <button
-          :disabled="!valid"
+          :disabled="!valid || submitting"
           type="submit"
           class="btn btn-primary w-[120px] self-center flex items-center submit-btn overflow-hidden"
         >
