@@ -91,7 +91,7 @@ onMounted(() => {
         <ParticleLogo />
       </div>
     </div>
-    <div class="container flex items-center justify-center mt-[100px] sm:mt-0 lg:h-[800px]">
+    <div class="container flex items-center justify-center mt-[100px] lg:mt-0 lg:h-[800px]">
       <p
         id="intro-text"
         class="leading-relaxed md:leading-relaxed xl:leading-relaxed text-sm md:text-2xl xl:text-3xl font-semibold text-center"

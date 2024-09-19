@@ -6,8 +6,11 @@ import { onMounted, ref } from "vue";
 import BlockBackground from "./BlockBackground.vue";
 import Education from "./Education.vue";
 import Experiences from "./Experiences.vue";
+import { useTextReveal } from "@/composables/useTextReveal";
 
 gsap.registerPlugin(ScrollTrigger);
+
+useTextReveal("#exp-and-edu-title");
 
 const activeTab = ref(0);
 
@@ -38,7 +41,7 @@ onMounted(() => {
   <section id="exp-and-edu" class="bg-black relative">
     <BlockBackground />
     <div class="container mx-auto py-10 md:py-16 lg:py-32 flex flex-col z-1">
-      <h1 class="font-bold text-3xl xl:text-5xl mb-10 self-center text-center gradient-text">
+      <h1 id="exp-and-edu-title" class="font-bold text-3xl xl:text-5xl mb-10 self-center text-center gradient-text">
         Experiences And Education
       </h1>
 
