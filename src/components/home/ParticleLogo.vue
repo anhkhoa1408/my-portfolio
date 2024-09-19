@@ -185,7 +185,7 @@ const changeStateIntervalFunc = () => {
 onMounted(() => {
   setTimeout(() => {
     initThreeJS();
-    intervalId = setInterval(changeStateIntervalFunc, 3000);
+    intervalId = setInterval(changeStateIntervalFunc, 4000);
     window.addEventListener("resize", onWindowResize);
   }, 3000);
 });
