@@ -17,6 +17,7 @@ onMounted(() => {
   });
 
   gsap.from("#intro-text .word", {
+    willChange: "opacity",
     opacity: 0.2,
     scrollTrigger: {
       trigger: "#intro-text",
@@ -62,7 +63,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section id="banner" class="banner flex flex-col py-24 md:py-16 lg:py-32">
+  <section id="banner" class="banner flex flex-col py-12 md:py-16 lg:py-32">
     <div class="container grid grid-cols-5 gap-10 lg:gap-5 relative">
       <div class="col-span-5 lg:col-span-3 flex flex-col items-start gradial-box">
         <p class="font-semibold text-sm md:text-base xl:text-xl mb-3">Hello, my name is</p>

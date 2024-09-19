@@ -12,7 +12,7 @@ const projects = [
     imageUrl: "/images/project/my-port.png",
     url: "https://github.com/anhkhoa1408/my-portfolio",
     class: "object-left-top",
-    description: "My portfolio o build using VueJS, GSAP and ThreeJS",
+    description: "My portfolio project build using VueJS, GSAP and ThreeJS",
   },
   {
     name: "Designer Portfolio",
@@ -26,15 +26,14 @@ const projects = [
     imageUrl: "/images/project/flower.png",
     url: "https://flower-estore.vercel.app/",
     class: "object-left-top",
-    description: "A flower-estore landing page build using NuxtJS",
+    description: "A flower-estore shop build using NuxtJS",
   },
   {
     name: "Portfolio Mailer",
     imageUrl: "/images/project/mail.png",
     url: "https://github.com/anhkhoa1408/portfolio-mailer",
     class: "object-center",
-    description:
-      "A project to send mail when contact form is submited from my portfolio using ExpressJS and nodemailer",
+    description: "A project to send mail to my portfolio using ExpressJS, Nodemailer and HBS for template email",
   },
   {
     name: "Clear Hackathon",
@@ -98,6 +97,7 @@ onMounted(() => {
 
 #side-projects {
   overflow-x: hidden;
+  will-change: transform, opacity;
   & .side-project {
     transition: all 0.3s ease;
     position: relative;

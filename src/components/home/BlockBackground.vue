@@ -29,6 +29,10 @@ onUnmounted(() => {
 </template>
 
 <style lang="css" scoped>
+.block {
+  will-change: background-color, opacity;
+}
+
 .fade {
   animation: Fade 1.5s ease-in-out;
 }

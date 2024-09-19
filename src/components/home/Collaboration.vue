@@ -21,12 +21,12 @@ onMounted(() => {
     ease: "power1.out",
     roundProps: "value",
     onUpdate: function () {
-      gradientTextEle.style.background = `linear-gradient(90deg, #FFF 0%, #FFF 50%, #25d8d3 51%, #25d8d3 100%) ${gradientPercentage.value.toString()}% / 200% 100% text`;
+      gradientTextEle.style.background = `linear-gradient(90deg, #FFF 0%, #FFF 50%, #25d8d3 51%, #25d8d3 100%) ${gradientPercentage.value.toString()}% / 300% 100% text`;
     },
     scrollTrigger: {
       trigger: "#collaboration",
-      start: "top 50%",
-      end: "bottom top",
+      start: "top center",
+      end: "bottom +=500",
       scrub: true,
     },
   });
@@ -47,5 +47,6 @@ onMounted(() => {
 <style lang="css" scoped>
 #collaborate-text {
   -webkit-text-fill-color: transparent;
+  background: linear-gradient(90deg, #fff 0%, #fff 50%, #25d8d3 51%, #25d8d3 102%) 0% / 300% 100% text;
 }
 </style>
