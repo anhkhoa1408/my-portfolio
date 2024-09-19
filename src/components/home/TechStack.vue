@@ -5,8 +5,11 @@ import { onMounted, ref } from "vue";
 
 import CodeJSON from "@/assets/images/animation/code.json";
 import { LottieAnimation } from "lottie-web-vue";
+import { useTextReveal } from "@/composables/useTextReveal";
 
 gsap.registerPlugin(ScrollTrigger);
+
+useTextReveal("#stack-title");
 
 const stacksIcon = [
   {
@@ -207,8 +210,10 @@ const handleClickCard = (event: MouseEvent) => {
 
 <template>
   <section id="stack" class="stack">
-    <div class="container mx-auto py-10 md:py-16 lg:py-32 flex flex-col">
-      <h1 class="font-bold text-3xl xl:text-5xl mb-[100px] self-center text-center gradient-text">My Skills</h1>
+    <div class="container mx-auto mb-14 md:mb-10 py-10 md:py-16 lg:py-32 flex flex-col">
+      <h1 id="stack-title" class="font-bold text-3xl xl:text-5xl mb-[100px] self-center text-center gradient-text">
+        My Skills
+      </h1>
       <div class="circle-wrap overflow-hidden relative flex flex-col items-center">
         <div
           v-for="icon in stacksIcon"
@@ -300,12 +305,14 @@ const handleClickCard = (event: MouseEvent) => {
   animation: Spin 80s linear infinite;
 
   &.circle-outer {
+    will-change: opacity;
     width: 600px;
     height: 600px;
     padding: 80px;
 
     .circle-middle,
     .circle-inner {
+      will-change: opacity;
       width: 100%;
       height: 100%;
       padding: 80px;
@@ -325,6 +332,7 @@ const handleClickCard = (event: MouseEvent) => {
 }
 
 .stack-icon {
+  will-change: transform, opacity;
   animation: TranslateUpDown 2s linear infinite;
 
   @media screen and (max-width: 576px) {
@@ -334,6 +342,7 @@ const handleClickCard = (event: MouseEvent) => {
 }
 
 .card-stack {
+  will-change: transform, opacity;
   backdrop-filter: blur(25px) saturate(200%);
   -webkit-backdrop-filter: blur(25px) saturate(200%);
   background-color: #2f444473;

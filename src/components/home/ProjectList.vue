@@ -7,9 +7,12 @@ import Tab from "@/components/tab/Tab.vue";
 import Project from "./Project.vue";
 import WorksProjectList from "./WorksProjectList.vue";
 import SideProjectList from "./SideProjectList.vue";
+import { useTextReveal } from "@/composables/useTextReveal";
 
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
+
+useTextReveal("#projects-title");
 
 const activeTab = ref(0);
 
@@ -24,7 +27,7 @@ const tabs = [
     id="projects"
     :class="['flex flex-col py-10 md:py-16 lg:py-32 bg-black', { 'lg:h-[1360px]': activeTab === 1 }]"
   >
-    <h1 class="font-bold text-3xl xl:text-5xl self-center mb-10 gradient-text">Projects</h1>
+    <h1 id="projects-title" class="font-bold text-3xl xl:text-5xl self-center mb-10 gradient-text">Projects</h1>
     <Tab :tabs="tabs" v-model:active-tab="activeTab" />
   </section>
 </template>

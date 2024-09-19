@@ -167,18 +167,29 @@ const showProjectCursor = (e: MouseEvent) => {
   }
 };
 
+const checkCursorBound = () => {
+  const cursorEle = document.getElementById("cursor-detail");
+  const wrapEle = document.getElementById("work-projects");
+  if (wrapEle && cursorEle && window.scrollY > wrapEle.offsetTop) {
+    cursorEle.style.opacity = "0";
+    cursorEle.style.transform = "scale(0)";
+  }
+};
+
 onMounted(() => {
-  const projectsEle = document.getElementById("projects");
+  const projectsEle = document.getElementById("work-projects");
   if (!projectsEle) return;
 
   projectsEle.addEventListener("mousemove", showProjectCursor);
+  window.addEventListener("scroll", checkCursorBound);
 });
 
 onUnmounted(() => {
-  const projectsEle = document.getElementById("projects");
+  const projectsEle = document.getElementById("work-projects");
   if (!projectsEle) return;
 
   projectsEle.removeEventListener("mousemove", showProjectCursor);
+  window.removeEventListener("scroll", checkCursorBound);
 });
 </script>
 
@@ -228,6 +239,7 @@ onUnmounted(() => {
 }
 
 .spiral-card {
+  will-change: transform;
   position: absolute;
   width: 225px;
   top: 40px;
@@ -238,7 +250,7 @@ onUnmounted(() => {
 }
 
 .nav {
-  @apply flex items-center justify-center p-2 absolute rounded-full duration-200;
+  @apply flex items-center justify-center p-2 absolute rounded-full duration-200 z-50;
   top: 35%;
 
   &:hover {

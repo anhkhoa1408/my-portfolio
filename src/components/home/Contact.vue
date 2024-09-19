@@ -2,16 +2,23 @@
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowRightIcon } from "@heroicons/vue/16/solid";
-import { ref, watch } from "vue";
+import { onMounted, ref, watch } from "vue";
 import { Label } from "../ui/label";
 import { appConfigs } from "@/configs/app";
 import { toast } from "vue3-toastify";
+import { useTextReveal } from "@/composables/useTextReveal";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const name = ref("");
 const email = ref("");
 const description = ref("");
 
 const valid = ref(false);
+
+useTextReveal("#contact-title");
 
 watch([name, email, description], () => {
   if (name.value && email.value && description.value) {
@@ -67,13 +74,36 @@ const handleSubmit = async () => {
     });
   }
 };
+
+onMounted(() => {
+  gsap.fromTo(
+    "#contact-form",
+    {
+      opacity: 0,
+    },
+    {
+      opacity: 1,
+      scrollTrigger: {
+        trigger: "#contact-form",
+        start: "top 60%",
+        end: "bottom 60%",
+      },
+    },
+  );
+});
 </script>
 
 <template>
   <section id="contact">
     <div class="container mx-auto py-10 md:py-16 lg:py-32 flex flex-col">
-      <h1 class="font-bold text-3xl xl:text-5xl mb-10 self-center text-center gradient-text">Contact</h1>
-      <form id="contact-form" @submit.prevent="handleSubmit" class="w-full md:w-8/12 lg:w-6/12 mx-auto flex flex-col">
+      <h1 id="contact-title" class="font-bold text-3xl xl:text-5xl mb-10 self-center text-center gradient-text">
+        Contact
+      </h1>
+      <form
+        id="contact-form"
+        @submit.prevent="handleSubmit"
+        class="w-full md:w-8/12 lg:w-6/12 mx-auto flex flex-col will-change-auto"
+      >
         <div class="grid w-full items-center gap-2">
           <Label for="name" class="mb-2">Name</Label>
           <Input
