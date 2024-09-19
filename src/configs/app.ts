@@ -3,6 +3,7 @@ export const appConfigs = {
   facebookUrl: import.meta.env.VITE_FACEBOOK_URL,
   linkedinUrl: import.meta.env.VITE_LINKEDIN_URL,
   githubUrl: import.meta.env.VITE_GITHUB_URL,
+  instagramUrl: import.meta.env.VITE_INSTAGRAM_URL,
   receiverEmail: import.meta.env.VITE_RECEIVER_EMAIL,
 
   // mailer env
