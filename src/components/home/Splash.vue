@@ -163,7 +163,7 @@ onMounted(() => {
     <div id="bottom-splash" class="h-[52%] basis-6/12 w-[100%] bg-white will-change-transform"></div>
     <h1
       id="hello"
-      class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-semibold [&_span]:text-primary [&_span]:text-[2.2rem] md:[&_span]:text-[3.2rem] lg:[&_span]:text-[5rem] xl:[&_span]:text-[6rem]"
+      class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-semibold [&_span]:text-primary [&_span]:text-[2rem] md:[&_span]:text-[3rem] lg:[&_span]:text-[5rem] xl:[&_span]:text-[5.8rem]"
     >
       Hello
     </h1>

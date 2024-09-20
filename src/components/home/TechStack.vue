@@ -247,7 +247,7 @@ onUnmounted(() => {
 
 <template>
   <section id="stack" class="stack">
-    <div id="glowing-cursor" :style="{ '--y': '-1000px', '--x': '-1000px' }"></div>
+    <div id="glowing-cursor" :style="{ '--y': '-1000px', '--x': '-1000px' }" class="hidden lg:block"></div>
     <div class="container mx-auto mb-14 md:mb-10 py-10 md:py-16 lg:py-32 flex flex-col">
       <h1 id="stack-title" class="font-bold text-3xl xl:text-5xl mb-[100px] self-center text-center gradient-text">
         My Skills

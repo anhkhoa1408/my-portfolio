@@ -198,7 +198,7 @@ onUnmounted(() => {
   <div id="work-projects" class="flex flex-col mt-5 w-full">
     <div
       id="detail-cursor"
-      class="detail-cursor flex items-center text-sm border-2 border-solid border-secondary-50 rounded-md"
+      class="detail-cursor hidden lg:flex items-center text-sm border-2 border-solid border-secondary-50 rounded-md"
     >
       <ArrowTurnDownRightIcon class="size-6 p-1 text-black" />
       View details
