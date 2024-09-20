@@ -222,14 +222,15 @@ const checkGlowingEffectBound = (e: Event) => {
   if (!stackEle || !cursorEle) return;
 
   const isInBound =
-    window.scrollY >= stackEle.offsetTop && window.scrollY <= stackEle.offsetTop + stackEle.offsetHeight;
+    window.scrollY >= stackEle.offsetTop &&
+    window.scrollY <= stackEle.offsetTop + stackEle.offsetHeight - window.innerHeight / 4;
 
-  if (isInBound) {
-    cursorEle.style.opacity = "1";
-    cursorEle.style.transform = "scale(1)";
-  } else {
+  if (!isInBound) {
     cursorEle.style.opacity = "0";
-    cursorEle.style.transform = "scale(0)";
+    cursorEle.style.transform = "scale(0) translate(-50%,-50%)";
+  } else {
+    cursorEle.style.opacity = "1";
+    cursorEle.style.transform = "scale(1) translate(-50%,-50%)";
   }
 };
 
@@ -246,7 +247,7 @@ onUnmounted(() => {
 
 <template>
   <section id="stack" class="stack">
-    <div id="glowing-cursor" class="fixed"></div>
+    <div id="glowing-cursor" :style="{ '--y': '-1000px', '--x': '-1000px' }"></div>
     <div class="container mx-auto mb-14 md:mb-10 py-10 md:py-16 lg:py-32 flex flex-col">
       <h1 id="stack-title" class="font-bold text-3xl xl:text-5xl mb-[100px] self-center text-center gradient-text">
         My Skills
@@ -391,12 +392,15 @@ onUnmounted(() => {
 }
 
 #glowing-cursor {
+  position: fixed;
   will-change: transform, opacity;
   transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
   width: 300px;
   height: 300px;
-  left: calc(var(--x) - 150px);
-  top: calc(var(--y) - 150px);
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -50%);
   overflow: hidden;
   background: radial-gradient(rgb(37 216 211 / 50%) 10%, transparent, transparent);
   &::after {

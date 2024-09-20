@@ -7,6 +7,9 @@ import autoprefixer from "autoprefixer";
 import tailwind from "tailwindcss";
 
 export default defineConfig({
+  esbuild: {
+    drop: ["console", "debugger"],
+  },
   css: {
     postcss: {
       plugins: [tailwind(), autoprefixer()],
