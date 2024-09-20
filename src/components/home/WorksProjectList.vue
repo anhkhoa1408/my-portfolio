@@ -174,8 +174,8 @@ const checkCursorBound = () => {
   if (!cursorEle || !worksProjectEle) return;
 
   const isInBound =
-    window.scrollY >= worksProjectEle.offsetTop - window.innerHeight / 2 &&
-    window.scrollY <= worksProjectEle.offsetTop + worksProjectEle.offsetHeight - window.innerHeight / 4;
+    window.scrollY >= worksProjectEle.offsetTop &&
+    window.scrollY <= worksProjectEle.offsetTop + worksProjectEle.offsetHeight;
 
   if (!isInBound) {
     cursorEle.style.opacity = "0";
@@ -184,18 +184,12 @@ const checkCursorBound = () => {
 };
 
 onMounted(() => {
-  const projectsEle = document.getElementById("work-projects");
-  if (!projectsEle) return;
-
-  projectsEle.addEventListener("mousemove", showProjectCursor);
+  window.addEventListener("mousemove", showProjectCursor);
   window.addEventListener("scroll", checkCursorBound);
 });
 
 onUnmounted(() => {
-  const projectsEle = document.getElementById("work-projects");
-  if (!projectsEle) return;
-
-  projectsEle.removeEventListener("mousemove", showProjectCursor);
+  window.removeEventListener("mousemove", showProjectCursor);
   window.removeEventListener("scroll", checkCursorBound);
 });
 </script>

@@ -208,7 +208,7 @@ const handleClickCard = (event: MouseEvent) => {
 };
 
 // Glowing effect style
-const setGlowingEffectPosition = (e: MouseEvent) => {
+const showGlowingCursor = (e: MouseEvent) => {
   const glowingEle = document.getElementById("glowing-cursor");
 
   glowingEle?.style.setProperty("--x", e.clientX + "px");
@@ -222,30 +222,25 @@ const checkGlowingEffectBound = (e: Event) => {
   if (!stackEle || !cursorEle) return;
 
   const isInBound =
-    window.scrollY >= stackEle.offsetTop - window.innerHeight / 2 &&
-    window.scrollY <= stackEle.offsetTop + stackEle.offsetHeight - window.innerHeight / 4;
+    window.scrollY >= stackEle.offsetTop && window.scrollY <= stackEle.offsetTop + stackEle.offsetHeight;
 
   if (isInBound) {
     cursorEle.style.opacity = "1";
+    cursorEle.style.transform = "scale(1)";
   } else {
     cursorEle.style.opacity = "0";
+    cursorEle.style.transform = "scale(0)";
   }
 };
 
 onMounted(() => {
-  const stackEle = document.getElementById("stack");
-  if (!stackEle) return;
-
   window.addEventListener("scroll", checkGlowingEffectBound);
-  stackEle.addEventListener("mousemove", setGlowingEffectPosition);
+  window.addEventListener("mousemove", showGlowingCursor);
 });
 
 onUnmounted(() => {
-  const stackEle = document.getElementById("stack");
-  if (!stackEle) return;
-
   window.removeEventListener("scroll", checkGlowingEffectBound);
-  stackEle.removeEventListener("mousemove", setGlowingEffectPosition);
+  window.removeEventListener("mousemove", showGlowingCursor);
 });
 </script>
 
@@ -396,6 +391,8 @@ onUnmounted(() => {
 }
 
 #glowing-cursor {
+  will-change: transform, opacity;
+  transition: transform 0.3s ease, opacity 0.3s ease;
   width: 300px;
   height: 300px;
   left: calc(var(--x) - 150px);
