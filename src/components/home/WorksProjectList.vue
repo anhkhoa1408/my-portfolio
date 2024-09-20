@@ -151,7 +151,7 @@ const handlePrevProject = () => {
 };
 
 const showProjectCursor = (e: MouseEvent) => {
-  const cursorEle = document.getElementById("cursor-detail");
+  const cursorEle = document.getElementById("detail-cursor");
   const targetEle = e.target as HTMLDivElement;
 
   if (!cursorEle) return;
@@ -168,27 +168,28 @@ const showProjectCursor = (e: MouseEvent) => {
 };
 
 const checkCursorBound = () => {
-  const cursorEle = document.getElementById("cursor-detail");
-  const wrapEle = document.getElementById("work-projects");
-  if (wrapEle && cursorEle && window.scrollY > wrapEle.offsetTop) {
+  const cursorEle = document.getElementById("detail-cursor");
+  const worksProjectEle = document.getElementById("work-projects");
+
+  if (!cursorEle || !worksProjectEle) return;
+
+  const isInBound =
+    window.scrollY >= worksProjectEle.offsetTop &&
+    window.scrollY <= worksProjectEle.offsetTop + worksProjectEle.offsetHeight;
+
+  if (!isInBound) {
     cursorEle.style.opacity = "0";
     cursorEle.style.transform = "scale(0)";
   }
 };
 
 onMounted(() => {
-  const projectsEle = document.getElementById("work-projects");
-  if (!projectsEle) return;
-
-  projectsEle.addEventListener("mousemove", showProjectCursor);
+  window.addEventListener("mousemove", showProjectCursor);
   window.addEventListener("scroll", checkCursorBound);
 });
 
 onUnmounted(() => {
-  const projectsEle = document.getElementById("work-projects");
-  if (!projectsEle) return;
-
-  projectsEle.removeEventListener("mousemove", showProjectCursor);
+  window.removeEventListener("mousemove", showProjectCursor);
   window.removeEventListener("scroll", checkCursorBound);
 });
 </script>
@@ -196,8 +197,8 @@ onUnmounted(() => {
 <template>
   <div id="work-projects" class="flex flex-col mt-5 w-full">
     <div
-      id="cursor-detail"
-      class="cursor-detail flex items-center text-sm border-2 border-solid border-secondary-50 rounded-md"
+      id="detail-cursor"
+      class="detail-cursor flex items-center text-sm border-2 border-solid border-secondary-50 rounded-md"
     >
       <ArrowTurnDownRightIcon class="size-6 p-1 text-black" />
       View details
@@ -279,7 +280,7 @@ onUnmounted(() => {
   }
 }
 
-.cursor-detail {
+.detail-cursor {
   @apply bg-primary text-white p-2 fixed z-50;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }

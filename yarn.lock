@@ -7,11 +7,6 @@
   resolved "https://registry.yarnpkg.com/@alloc/quick-lru/-/quick-lru-5.2.0.tgz#7bf68b20c0a350f936915fcae06f58e32007ce30"
   integrity sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==
 
-"@alvarosabu/utils@^3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@alvarosabu/utils/-/utils-3.2.0.tgz#76b8e3a2390143858a8cad8efe4286b5dde51e8d"
-  integrity sha512-aoGWRfaQjOo9TUwrBA6W0zwTHktgrXy69GIFNILT4gHsqscw6+X8P6uoSlZVQFr887SPm8x3aDin5EBVq8y4pw==
-
 "@babel/helper-string-parser@^7.24.8":
   version "7.24.8"
   resolved "https://registry.yarnpkg.com/@babel/helper-string-parser/-/helper-string-parser-7.24.8.tgz#5b3329c9a58803d5df425e5785865881a81ca48d"
@@ -375,15 +370,6 @@
   dependencies:
     "@tanstack/virtual-core" "3.10.7"
 
-"@tresjs/core@^4.2.10":
-  version "4.2.10"
-  resolved "https://registry.yarnpkg.com/@tresjs/core/-/core-4.2.10.tgz#795f71a75d4a55c3875d09ddcd9411bd66afd340"
-  integrity sha512-ZKS/G9s86t69TfPUdvAzQkcgqvsLhTGhSKI0BssT/+RZDU0ueFMDKW8g15rNjvs/OM0KEHEPl/W8g87H1YhAbw==
-  dependencies:
-    "@alvarosabu/utils" "^3.2.0"
-    "@vue/devtools-api" "^6.6.3"
-    "@vueuse/core" "^10.11.0"
-
 "@tsconfig/node20@^20.1.4":
   version "20.1.4"
   resolved "https://registry.yarnpkg.com/@tsconfig/node20/-/node20-20.1.4.tgz#3457d42eddf12d3bde3976186ab0cd22b85df928"
@@ -696,9 +682,9 @@
     vue-demi ">=0.14.10"
 
 "@webgpu/types@*":
-  version "0.1.44"
-  resolved "https://registry.yarnpkg.com/@webgpu/types/-/types-0.1.44.tgz#1b264c0bfcb298df59d0943dad8ef02b4ff98d14"
-  integrity sha512-JDpYJN5E/asw84LTYhKyvPpxGnD+bAKPtpW9Ilurf7cZpxaTbxkQcGwOd7jgB9BPBrTYQ+32ufo4HiuomTjHNQ==
+  version "0.1.46"
+  resolved "https://registry.yarnpkg.com/@webgpu/types/-/types-0.1.46.tgz#707d56d318e663b165a1133c5a86cfcc11afe59e"
+  integrity sha512-2iogO6Zh0pTbKLGZuuGWEmJpF/fTABGs7G9wXxpn7s24XSJchSUIiMqIJHURi5zsMZRRTuXrV/3GLOkmOFjq5w==
 
 ansi-regex@^5.0.1:
   version "5.0.1"

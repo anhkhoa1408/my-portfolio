@@ -25,11 +25,11 @@ onMounted(() => {
         timeline.add("loading-and-welcome", 0).fromTo(
           "#hello span",
           {
-            letterSpacing: "1.2rem",
+            letterSpacing: "1.6rem",
           },
           {
             letterSpacing: "0.2rem",
-            ease: CustomEase.create("", ".25,.87,.92,-0.05"),
+            ease: CustomEase.create("", ".48,1.49,.88,-0.25"),
             duration: 2,
           },
           "loading-and-welcome",
@@ -39,11 +39,11 @@ onMounted(() => {
         timeline.add("loading-and-welcome", 0).fromTo(
           "#hello span",
           {
-            letterSpacing: "2rem",
+            letterSpacing: "4rem",
           },
           {
             letterSpacing: "0.5rem",
-            ease: CustomEase.create("", ".25,.87,.92,-0.05"),
+            ease: CustomEase.create("", ".48,1.49,.88,-0.25"),
             duration: 2,
           },
           "loading-and-welcome",
@@ -53,11 +53,11 @@ onMounted(() => {
         timeline.add("loading-and-welcome", 0).fromTo(
           "#hello span",
           {
-            letterSpacing: "3rem",
+            letterSpacing: "5rem",
           },
           {
             letterSpacing: "0.5rem",
-            ease: CustomEase.create("", ".25,.87,.92,-0.05"),
+            ease: CustomEase.create("", ".48,1.49,.88,-0.25"),
             duration: 2,
           },
           "loading-and-welcome",
@@ -67,11 +67,11 @@ onMounted(() => {
         timeline.add("loading-and-welcome", 0).fromTo(
           "#hello span",
           {
-            letterSpacing: "3.5rem",
+            letterSpacing: "5.5rem",
           },
           {
             letterSpacing: "0.5rem",
-            ease: CustomEase.create("", ".25,.87,.92,-0.05"),
+            ease: CustomEase.create("", ".48,1.49,.88,-0.25"),
             duration: 2,
           },
           "loading-and-welcome",
@@ -81,11 +81,11 @@ onMounted(() => {
         timeline.add("loading-and-welcome", 0).fromTo(
           "#hello span",
           {
-            letterSpacing: "4.5rem",
+            letterSpacing: "6rem",
           },
           {
             letterSpacing: "0.5rem",
-            ease: CustomEase.create("", ".25,.87,.92,-0.05"),
+            ease: CustomEase.create("", ".48,1.49,.88,-0.25"),
             duration: 2,
           },
           "loading-and-welcome",
@@ -95,11 +95,11 @@ onMounted(() => {
         timeline.add("loading-and-welcome", 0).fromTo(
           "#hello span",
           {
-            letterSpacing: "4.5rem",
+            letterSpacing: "7rem",
           },
           {
             letterSpacing: "0.5rem",
-            ease: CustomEase.create("", ".25,.87,.92,-0.05"),
+            ease: CustomEase.create("", ".48,1.49,.88,-0.25"),
             duration: 2,
           },
           "loading-and-welcome",
@@ -163,7 +163,7 @@ onMounted(() => {
     <div id="bottom-splash" class="h-[52%] basis-6/12 w-[100%] bg-white will-change-transform"></div>
     <h1
       id="hello"
-      class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-semibold [&_span]:text-primary [&_span]:text-[2.2rem] md:[&_span]:text-[3.2rem] lg:[&_span]:text-[5rem] xl:[&_span]:text-[7rem]"
+      class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-semibold [&_span]:text-primary [&_span]:text-[2.2rem] md:[&_span]:text-[3.2rem] lg:[&_span]:text-[5rem] xl:[&_span]:text-[6rem]"
     >
       Hello
     </h1>

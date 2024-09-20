@@ -6,9 +6,6 @@ import { defineConfig } from "vite";
 import autoprefixer from "autoprefixer";
 import tailwind from "tailwindcss";
 
-import { templateCompilerOptions } from "@tresjs/core";
-
-// https://vitejs.dev/config/
 export default defineConfig({
   esbuild: {
     drop: ["console", "debugger"],
@@ -18,7 +15,7 @@ export default defineConfig({
       plugins: [tailwind(), autoprefixer()],
     },
   },
-  plugins: [vue({ ...templateCompilerOptions })],
+  plugins: [vue()],
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),

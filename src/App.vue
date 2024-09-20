@@ -3,6 +3,7 @@ import Lenis from "lenis";
 import { onMounted } from "vue";
 import { RouterView } from "vue-router";
 import Splash from "./components/home/Splash.vue";
+import ProgressBar from "./components/home/ProgressBar.vue";
 import Footer from "./layouts/Footer.vue";
 import Header from "./layouts/Header.vue";
 
@@ -19,6 +20,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <ProgressBar />
   <Splash />
   <Header />
   <RouterView />

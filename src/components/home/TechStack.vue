@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { onMounted, ref } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 
 import CodeJSON from "@/assets/images/animation/code.json";
-import { LottieAnimation } from "lottie-web-vue";
 import { useTextReveal } from "@/composables/useTextReveal";
+import { LottieAnimation } from "lottie-web-vue";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -206,10 +206,48 @@ const handleClickCard = (event: MouseEvent) => {
     behavior: "smooth",
   });
 };
+
+// Glowing effect style
+const showGlowingCursor = (e: MouseEvent) => {
+  const glowingEle = document.getElementById("glowing-cursor");
+
+  glowingEle?.style.setProperty("--x", e.clientX + "px");
+  glowingEle?.style.setProperty("--y", e.clientY + "px");
+};
+
+const checkGlowingEffectBound = (e: Event) => {
+  const stackEle = document.getElementById("stack");
+  const cursorEle = document.getElementById("glowing-cursor");
+
+  if (!stackEle || !cursorEle) return;
+
+  const isInBound =
+    window.scrollY >= stackEle.offsetTop &&
+    window.scrollY <= stackEle.offsetTop + stackEle.offsetHeight - window.innerHeight / 4;
+
+  if (!isInBound) {
+    cursorEle.style.opacity = "0";
+    cursorEle.style.transform = "scale(0) translate(-50%,-50%)";
+  } else {
+    cursorEle.style.opacity = "1";
+    cursorEle.style.transform = "scale(1) translate(-50%,-50%)";
+  }
+};
+
+onMounted(() => {
+  window.addEventListener("scroll", checkGlowingEffectBound);
+  window.addEventListener("mousemove", showGlowingCursor);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", checkGlowingEffectBound);
+  window.removeEventListener("mousemove", showGlowingCursor);
+});
 </script>
 
 <template>
   <section id="stack" class="stack">
+    <div id="glowing-cursor" :style="{ '--y': '-1000px', '--x': '-1000px' }"></div>
     <div class="container mx-auto mb-14 md:mb-10 py-10 md:py-16 lg:py-32 flex flex-col">
       <h1 id="stack-title" class="font-bold text-3xl xl:text-5xl mb-[100px] self-center text-center gradient-text">
         My Skills
@@ -350,6 +388,28 @@ const handleClickCard = (event: MouseEvent) => {
 
   .card-stack-title {
     @apply mb-5 lg:mb-8 text-white text-lg md:text-xl xl:text-2xl font-semibold;
+  }
+}
+
+#glowing-cursor {
+  position: fixed;
+  will-change: transform, opacity;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  width: 300px;
+  height: 300px;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  background: radial-gradient(rgb(37 216 211 / 50%) 10%, transparent, transparent);
+  &::after {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.2);
+    inset: 0;
+    border-radius: 50%;
+    z-index: 1;
+    position: absolute;
   }
 }
 
