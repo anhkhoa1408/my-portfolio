@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { onMounted, ref } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 
 import CodeJSON from "@/assets/images/animation/code.json";
-import { LottieAnimation } from "lottie-web-vue";
 import { useTextReveal } from "@/composables/useTextReveal";
+import { LottieAnimation } from "lottie-web-vue";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -206,10 +206,52 @@ const handleClickCard = (event: MouseEvent) => {
     behavior: "smooth",
   });
 };
+
+// Glowing effect style
+const setGlowingEffectPosition = (e: MouseEvent) => {
+  const glowingEle = document.getElementById("glowing-cursor");
+
+  glowingEle?.style.setProperty("--x", e.clientX + "px");
+  glowingEle?.style.setProperty("--y", e.clientY + "px");
+};
+
+const checkGlowingEffectBound = (e: Event) => {
+  const stackEle = document.getElementById("stack");
+  const cursorEle = document.getElementById("glowing-cursor");
+
+  if (!stackEle || !cursorEle) return;
+
+  const isInBound =
+    window.scrollY >= stackEle.offsetTop - window.innerHeight / 2 &&
+    window.scrollY <= stackEle.offsetTop + stackEle.offsetHeight - window.innerHeight / 4;
+
+  if (isInBound) {
+    cursorEle.style.opacity = "1";
+  } else {
+    cursorEle.style.opacity = "0";
+  }
+};
+
+onMounted(() => {
+  const stackEle = document.getElementById("stack");
+  if (!stackEle) return;
+
+  window.addEventListener("scroll", checkGlowingEffectBound);
+  stackEle.addEventListener("mousemove", setGlowingEffectPosition);
+});
+
+onUnmounted(() => {
+  const stackEle = document.getElementById("stack");
+  if (!stackEle) return;
+
+  window.removeEventListener("scroll", checkGlowingEffectBound);
+  stackEle.removeEventListener("mousemove", setGlowingEffectPosition);
+});
 </script>
 
 <template>
   <section id="stack" class="stack">
+    <div id="glowing-cursor" class="fixed"></div>
     <div class="container mx-auto mb-14 md:mb-10 py-10 md:py-16 lg:py-32 flex flex-col">
       <h1 id="stack-title" class="font-bold text-3xl xl:text-5xl mb-[100px] self-center text-center gradient-text">
         My Skills
@@ -350,6 +392,23 @@ const handleClickCard = (event: MouseEvent) => {
 
   .card-stack-title {
     @apply mb-5 lg:mb-8 text-white text-lg md:text-xl xl:text-2xl font-semibold;
+  }
+}
+
+#glowing-cursor {
+  width: 300px;
+  height: 300px;
+  left: calc(var(--x) - 150px);
+  top: calc(var(--y) - 150px);
+  overflow: hidden;
+  background: radial-gradient(rgb(37 216 211 / 50%) 10%, transparent, transparent);
+  &::after {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.2);
+    inset: 0;
+    border-radius: 50%;
+    z-index: 1;
+    position: absolute;
   }
 }
 

@@ -21,7 +21,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div ref="progress" class="fixed z-[1000] top-0 left-0 h-[5px] bg-gradient-main"></div>
+  <div ref="progress" class="fixed z-[1000] top-0 left-0 h-[5px] rounded-md bg-gradient-main"></div>
 </template>
 
 <style lang="css" scoped></style>
