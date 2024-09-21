@@ -28,7 +28,7 @@ onMounted(() => {
             letterSpacing: "1.6rem",
           },
           {
-            letterSpacing: "0.2rem",
+            letterSpacing: "0.1rem",
             ease: CustomEase.create("", ".48,1.49,.88,-0.25"),
             duration: 2,
           },
@@ -53,7 +53,7 @@ onMounted(() => {
         timeline.add("loading-and-welcome", 0).fromTo(
           "#hello span",
           {
-            letterSpacing: "5rem",
+            letterSpacing: "4.5rem",
           },
           {
             letterSpacing: "0.5rem",
@@ -163,9 +163,9 @@ onMounted(() => {
     <div id="bottom-splash" class="h-[52%] basis-6/12 w-[100%] bg-white will-change-transform"></div>
     <h1
       id="hello"
-      class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-semibold [&_span]:text-primary [&_span]:text-[2rem] md:[&_span]:text-[3rem] lg:[&_span]:text-[5rem] xl:[&_span]:text-[5.8rem]"
+      class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-semibold [&_span]:text-primary [&_span]:text-[2rem] md:[&_span]:text-[3rem] lg:[&_span]:text-[4rem] xl:[&_span]:text-[5rem] 2xl:[&_span]:text-[6rem]"
     >
-      Hello
+      HELLO
     </h1>
     <div
       id="counter"

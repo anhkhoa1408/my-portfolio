@@ -111,14 +111,14 @@ onUnmounted(() => {
   <section id="banner" class="banner flex flex-col py-12 md:py-16 lg:py-32">
     <div id="blend-cursor" :style="{ '--y': '-1000px', '--x': '-1000px' }" class="hidden lg:block"></div>
     <div class="container grid grid-cols-5 gap-10 lg:gap-5 relative">
-      <div class="col-span-5 lg:col-span-3 flex flex-col items-start gradial-box">
+      <div class="col-span-5 lg:col-span-3 flex flex-col items-start gradial-box zoom">
         <p class="font-semibold text-sm md:text-base xl:text-xl mb-3">Hello, my name is</p>
-        <h1 class="font-bold text-3xl md:text-4xl xl:text-6xl mb-4 lg:mb-6 gradient-text zoom">Nguyen Anh Khoa</h1>
+        <h1 class="font-bold text-3xl md:text-4xl xl:text-6xl mb-4 lg:mb-6 gradient-text">Nguyen Anh Khoa</h1>
         <p class="leading-relaxed text-xl md:text-3xl xl:text-3xl mb-6 md:mb-10">
           <span id="animated-text"></span>
           <span id="cursor"> _</span>
         </p>
-        <div class="grid grid-cols-3 gap-4 mb-6 zoom">
+        <div class="grid grid-cols-3 gap-4 mb-6">
           <a :href="appConfigs.facebookUrl" target="_blank" rel="noopener noreferer" class="col-span-1">
             <img src="/images/social/facebook.svg" />
           </a>
@@ -164,10 +164,10 @@ onUnmounted(() => {
   mix-blend-mode: difference;
   background-color: white;
   border-radius: 50%;
-  z-index: 30;
+  z-index: 50;
   transition: transform 0.75s ease, scale 0.75s ease, width 0.3s linear, height 0.3s linear;
   pointer-events: none;
-  transform: translate(-50%, -50%);
+  transform: scale(0), translate(-50%, -50%);
   opacity: 0;
 }
 </style>
