@@ -206,5 +206,5 @@ onUnmounted(() => {
 </style>
 
 <template>
-  <div ref="container" class="particle-container"></div>
+  <div ref="container" class="particle-container zoom"></div>
 </template>

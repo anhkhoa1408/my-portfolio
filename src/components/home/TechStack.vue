@@ -400,9 +400,10 @@ onUnmounted(() => {
   height: 300px;
   left: var(--x);
   top: var(--y);
-  transform: translate(-50%, -50%);
+  transform: scale(0), translate(-50%, -50%);
   overflow: hidden;
   background: radial-gradient(rgb(37 216 211 / 50%) 10%, transparent, transparent);
+
   &::after {
     content: "";
     background-color: rgba(0, 0, 0, 0.2);
