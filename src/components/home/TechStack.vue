@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { onMounted, onUnmounted, ref } from "vue";
+import { onMounted, onUnmounted } from "vue";
 
 import CodeJSON from "@/assets/images/animation/code.json";
 import { useTextReveal } from "@/composables/useTextReveal";
@@ -110,12 +110,7 @@ const libsAndFrameworks = [
 
 const database = ["/images/mongodb.svg"];
 
-const lottiesAnimation = ref();
 onMounted(() => {
-  setTimeout(() => {
-    lottiesAnimation.value.goToAndPlay(150, true);
-  }, 500);
-
   const cardStacksEle = document.querySelectorAll(".card-stack");
 
   cardStacksEle.forEach((card, index, parent) => {
@@ -328,7 +323,7 @@ onUnmounted(() => {
       </div>
       <div class="col-span-2 md:col-span-1">
         <div class="[&>div]:h-[250px] md:[&>div]:h-[400px] lg:[&>div]:h-[450px] sticky top-[150px]">
-          <LottieAnimation :animation-data="CodeJSON" :auto-play="true" :loop="true" :speed="0.1" ref="anim" />
+          <LottieAnimation :animation-data="CodeJSON" :auto-play="true" :loop="true" :speed="0.1" />
         </div>
       </div>
     </div>
