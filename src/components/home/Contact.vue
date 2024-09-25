@@ -120,6 +120,7 @@ onMounted(() => {
       <h1 id="contact-title" class="font-bold text-3xl xl:text-5xl mb-10 self-center text-center gradient-text">
         Contact
       </h1>
+
       <form
         id="contact-form"
         @submit.prevent="handleSubmit"
