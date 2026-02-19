@@ -53,7 +53,8 @@ const openProjectLink = () => {
 
 <style lang="css" scoped>
 .project-card.active {
-  background: linear-gradient(to right, black, #00000058),
+  background:
+    linear-gradient(to right, black, #00000058),
     conic-gradient(from var(--border-angle), #000000, aqua 94%, lightblue 90%, aqua 94%) border-box;
   animation: borderAnimation 5s linear infinite;
   border-radius: 16px;
