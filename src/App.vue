@@ -27,6 +27,16 @@ onMounted(() => {
   <Footer />
 </template>
 
+<style>
+body {
+  scroll-padding-top: 64px;
+}
+
+section {
+  scroll-margin-top: 64px;
+}
+</style>
+
 <style scoped>
 header {
   line-height: 1.5;

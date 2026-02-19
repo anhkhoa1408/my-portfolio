@@ -21,7 +21,7 @@ const stacksIcon = [
   {
     x: "20%",
     y: "50%",
-    size: 70,
+    size: 80,
     url: "/images/vue.svg",
   },
   {
@@ -84,6 +84,12 @@ const stacksIcon = [
     size: 60,
     url: "/images/bootstrap.svg",
   },
+  {
+    x: "35%",
+    y: "85%",
+    size: 80,
+    url: "/images/angular.svg",
+  },
 ];
 
 const langsAndTools = [
@@ -96,19 +102,28 @@ const langsAndTools = [
 
 const libsAndFrameworks = [
   "/images/react.svg",
+  "/images/react-native.svg",
+  "/images/angular.svg",
   "/images/next-js.svg",
   "/images/redux.svg",
   "/images/redux-saga.svg",
   "/images/vue.svg",
   "/images/nuxt.svg",
-  "/images/express.svg",
-  "/images/react-native.svg",
+  "/images/cypress.svg",
+  "/images/jest.svg",
   "/images/bootstrap.svg",
   "/images/tailwind-css.svg",
   "/images/tanstack-query.svg",
 ];
 
-const database = ["/images/mongodb.svg"];
+const backendTechnologies = [
+  "/images/nestjs.svg",
+  "/images/express.svg",
+  "/images/mongodb.svg",
+  "/images/docker.svg",
+  "/images/aws.svg",
+  "/images/firebase.svg",
+];
 
 onMounted(() => {
   const cardStacksEle = document.querySelectorAll(".card-stack");
@@ -279,9 +294,9 @@ onUnmounted(() => {
             @mouseleave="handleMouseLeaveCard($event)"
           >
             <h2 class="card-stack-title">Language and Tools</h2>
-            <div class="grid grid-cols-8 gap-2 lg:gap-6">
+            <div class="grid grid-cols-8 gap-4 lg:gap-6">
               <div v-for="lang in langsAndTools" class="grid-cols-1 flex items-center justify-center">
-                <img :src="lang" class="size-6 lg:size-12" />
+                <img :src="lang" class="size-7 lg:size-12" />
               </div>
             </div>
           </div>
@@ -296,9 +311,9 @@ onUnmounted(() => {
             @mouseleave="handleMouseLeaveCard($event)"
           >
             <h2 class="card-stack-title">Library and Frameworks</h2>
-            <div class="grid grid-cols-8 gap-2 lg:gap-6">
+            <div class="grid grid-cols-8 gap-4 lg:gap-6">
               <div v-for="(lib, index) in libsAndFrameworks" class="grid-cols-1">
-                <img :src="lib" :class="['size-6 lg:size-12', { 'bg-white p-2': index === 6 }]" />
+                <img :src="lib" class="size-7 lg:size-12" />
               </div>
             </div>
           </div>
@@ -312,10 +327,10 @@ onUnmounted(() => {
             @mouseenter="handleMouseEnterCard($event)"
             @mouseleave="handleMouseLeaveCard($event)"
           >
-            <h2 class="card-stack-title">Database</h2>
-            <div class="grid grid-cols-8 gap-2 lg:gap-6">
-              <div v-for="db in database" class="grid-cols-1">
-                <img :src="db" class="size-6 lg:size-12" />
+            <h2 class="card-stack-title">Backend Technologies</h2>
+            <div class="grid grid-cols-8 gap-4 lg:gap-6">
+              <div v-for="(db, index) in backendTechnologies" :key="db" class="grid-cols-1">
+                <img :src="db" class="size-7 lg:size-12 bg-white p-1" />
               </div>
             </div>
           </div>
@@ -389,7 +404,9 @@ onUnmounted(() => {
 #glowing-cursor {
   position: fixed;
   will-change: transform, opacity;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
   opacity: 0;
   width: 300px;
   height: 300px;
