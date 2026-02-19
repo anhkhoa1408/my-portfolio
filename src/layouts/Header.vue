@@ -9,10 +9,7 @@ const scrollToSection = (id: string) => {
 
   if (!ele) return;
 
-  window.scrollTo({
-    top: ele.offsetTop,
-    behavior: "smooth",
-  });
+  ele.scrollIntoView({ behavior: "smooth" });
   openSidebar.value = false;
 };
 

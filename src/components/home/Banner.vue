@@ -142,9 +142,9 @@ onUnmounted(() => {
         id="intro-text"
         class="leading-relaxed md:leading-relaxed xl:leading-relaxed text-sm md:text-2xl xl:text-3xl font-semibold text-center zoom"
       >
-        I'm a Front-end Developer with 3 years experiences of Web Development. I enjoy solving problem and creating best
-        user experiences for users. I also enjoy exploring and learning about new technologies, and reading blog posts
-        from those who are ahead in the field to gain more experience and knowledge for myself.
+        I'm a Front-end Developer with 4+ years experiences of Web Development. I enjoy solving problem and creating
+        best user experiences for users. I also enjoy exploring and learning about new technologies, and reading blog
+        posts from those who are ahead in the field to gain more experience and knowledge for myself.
       </p>
     </div>
   </section>
@@ -165,7 +165,11 @@ onUnmounted(() => {
   background-color: white;
   border-radius: 50%;
   z-index: 50;
-  transition: transform 0.75s ease, scale 0.75s ease, width 0.3s linear, height 0.3s linear;
+  transition:
+    transform 0.75s ease,
+    scale 0.75s ease,
+    width 0.3s linear,
+    height 0.3s linear;
   pointer-events: none;
   transform: scale(0), translate(-50%, -50%);
   opacity: 0;

@@ -15,13 +15,6 @@ const projects = [
     description: "My portfolio project build using VueJS, GSAP and ThreeJS",
   },
   {
-    name: "Designer Portfolio",
-    imageUrl: "/images/project/pnhi-port.png",
-    url: "https://phuong-nhi-portfolio.netlify.app/",
-    class: "object-left-top",
-    description: "My friend's portfolio project build using ReactJS and MatterJS",
-  },
-  {
     name: "E-store Flower",
     imageUrl: "/images/project/flower.png",
     url: "https://flower-estore.vercel.app/",
@@ -92,7 +85,9 @@ onMounted(() => {
 <style lang="css" scoped>
 .cursor-detail {
   @apply bg-primary text-white p-2 fixed z-50;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 #side-projects {

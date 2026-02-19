@@ -18,16 +18,12 @@ const imagesData: ImageProps[] = [
     color: 0x5fc1d7,
   },
   {
+    src: "/images/logo/angular.png",
+    color: 0xdd0031,
+  },
+  {
     src: "/images/logo/vue.png",
     color: 0x42d392,
-  },
-  {
-    src: "/images/logo/tailwind.png",
-    color: 0x3abcf7,
-  },
-  {
-    src: "/images/logo/redux.png",
-    color: 0x7248b7,
   },
 ];
 
