@@ -142,9 +142,9 @@ onUnmounted(() => {
         id="intro-text"
         class="leading-relaxed md:leading-relaxed xl:leading-relaxed text-sm md:text-2xl xl:text-3xl font-semibold text-center zoom"
       >
-        I'm a Front-end Developer with 4+ years experiences of Web Development. I enjoy solving problem and creating
-        best user experiences for users. I also enjoy exploring and learning about new technologies, and reading blog
-        posts from those who are ahead in the field to gain more experience and knowledge for myself.
+        Software Engineer with 5+ years of experience building scalable, user-friendly web applications. Passionate
+        about solving problems, improving user experiences, and continuously learning new technologies and industry best
+        practices.
       </p>
     </div>
   </section>
