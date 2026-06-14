@@ -8,7 +8,7 @@ import ParticleLogo from "./ParticleLogo.vue";
 
 gsap.registerPlugin(TextPlugin);
 
-const wordsIntro = ["A Frontend Developer", "I build things for web and mobile application"];
+const wordsIntro = ["A Software Engineer", "I build things for web and mobile application"];
 
 onMounted(() => {
   new SplitType("#intro-text", {

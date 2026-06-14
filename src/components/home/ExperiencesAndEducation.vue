@@ -18,23 +18,6 @@ const tabs = [
   { name: "Experience", component: Experiences },
   { name: "Education", component: Education },
 ];
-
-// onMounted(() => {
-//   gsap.to("body", {
-//     scrollTrigger: {
-//       trigger: "#exp-and-edu",
-//       start: "top 20%",
-//       end: "top 30%",
-//       toggleActions: "play reverse play reverse",
-//       onLeave: () => {
-//         activeTab.value = 1;
-//       },
-//       onLeaveBack: () => {
-//         activeTab.value = 0;
-//       },
-//     },
-//   });
-// });
 </script>
 
 <template>

@@ -35,7 +35,7 @@ onMounted(() => {
 
 <template>
   <section id="collaboration" class="py-10 md:py-16 lg:py-32 flex flex-col justify-center bg-black">
-    <TextMarquee children="Frontend Developer" :reverse="true" />
+    <TextMarquee children="Software Engineer" :reverse="true" />
     <h1 class="text-2xl lg:text-4xl font-bold self-center lg:my-5">
       <span class="text-white">Contact to </span>
       <span id="collaborate-text">collaborate?</span>

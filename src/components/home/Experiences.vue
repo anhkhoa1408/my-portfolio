@@ -6,7 +6,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const experiences = [
   {
-    title: "Middle Frontend Engineer",
+    title: "Software Engineer",
     company: "LNP Technologies",
     startDate: "October 2024",
     endDate: "Present",
@@ -127,6 +127,7 @@ onMounted(() => {
     top: 12px;
     width: 10px;
     height: var(--height);
+    border-radius: 0.5rem;
     transform: translateX(-40px);
     background: oklch(79.962% 0.1321 191.811);
   }
